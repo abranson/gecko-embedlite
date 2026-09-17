@@ -1,0 +1,40 @@
+# -*- Mode: python; indent-tabs-mode: nil; tab-width: 40 -*-
+# vim: set filetype=python:
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+XPIDL_SOURCES += [
+    'nsIEmbedLiteHistory.idl',
+]
+
+XPIDL_MODULE = 'embedLite'
+
+EXPORTS += [
+    'EmbedWidgetFactoryRegister.h',
+]
+
+SOURCES += [
+    'EmbedliteGenericFactory.cpp',
+    'EmbedWidgetFactoryRegister.cpp',
+    'nsClipboard.cpp',
+]
+
+LOCAL_INCLUDES += [
+    '!/ipc/ipdl/_ipdlheaders',
+    '../utils',
+    '/docshell/base',
+    '/dom/base',
+    '/ipc/chromium/src',
+    '/widget',
+]
+
+XPCOM_MANIFESTS += [
+    'components.conf',
+]
+
+EXTRA_JS_MODULES += [
+    'EmbedLitePromptCollection.sys.mjs',
+]
+
+FINAL_LIBRARY = 'xul'

@@ -1,0 +1,34 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Andrew Branson <andrew.branson@jolla.com>
+Date: Thu, 17 Sep 2026 18:05:50 +0300
+Subject: Version the EmbedLite libxul SONAME
+
+Use the Gecko major and minor version as the ELF ABI generation for the
+Sailfish EmbedLite build. This lets patch-level security updates replace
+Gecko without requiring downstream rebuilds, while minor updates require a
+matching QtMoz build.
+
+Mozilla's SONAME property accepts a base name and appends the platform
+suffix, so pass the complete versioned name to the ELF linker.
+---
+ toolkit/library/moz.build | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/toolkit/library/moz.build b/toolkit/library/moz.build
+index 57af0569c4bc..5438051bef05 100644
+--- a/toolkit/library/moz.build
++++ b/toolkit/library/moz.build
+@@ -23,6 +23,13 @@ def Libxul(name, output_category=None):
+         GeckoSharedLibrary(name, output_category=output_category)
+         SHARED_LIBRARY_NAME = "xul"
+ 
++        if (
++            CONFIG["MOZ_BUILD_APP"] == "mobile/sailfishos"
++            and CONFIG["OS_ARCH"] == "Linux"
++        ):
++            embedlite_abi = ".".join(CONFIG["MOZ_APP_VERSION"].split(".")[:2])
++            LDFLAGS += ["-Wl,-soname,libxul.so.%s" % embedlite_abi]
++
+     DELAYLOAD_DLLS += [
+         "avrt.dll",
+         "comdlg32.dll",

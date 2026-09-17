@@ -1,0 +1,528 @@
+/* -*- Mode: C++; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 2 -*-
+ * vim: sw=2 ts=8 et :
+ */
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+#include "EmbedLog.h"
+#include "PuppetWidgetBase.h"
+
+#include "mozilla/PresShell.h"
+#include "mozilla/SchedulerGroup.h"
+
+#include "WindowRenderer.h"
+
+using namespace mozilla::layers;
+
+namespace mozilla {
+namespace embedlite {
+
+// Arbitrary, fungible.
+const size_t PuppetWidgetBase::kMaxDimension = 4000;
+
+static nsTArray<PuppetWidgetBase*> gTopLevelWindows;
+
+NS_IMPL_ISUPPORTS_INHERITED(PuppetWidgetBase,
+                            nsIWidget,
+                            nsISupportsWeakReference)
+
+PuppetWidgetBase::PuppetWidgetBase()
+  : nsIWidget()
+  , mVisible(false)
+  , mEnabled(false)
+  , mActive(false)
+  , mRotation(mozilla::ROTATION_0)
+  , mBounds(0, 0, 0, 0)
+  , mMargins(0, 0, 0, 0)
+  , mSafeAreaInsets(0, 0, 0, 0)
+  , mSizeMode(nsSizeMode_Normal)
+
+{
+}
+
+nsresult
+PuppetWidgetBase::Create(nsIWidget *aParent, const LayoutDeviceIntRect &aRect,
+                         const widget::InitData& aInitData)
+{
+  LOGT("Puppet: %p, parent: %p", this, aParent);
+
+  PuppetWidgetBase* parent = dynamic_cast<PuppetWidgetBase*>(aParent);
+
+  mEnabled = true;
+  mVisible = parent ? parent->mVisible : true;
+
+  mRotation = parent ? parent->mRotation : mRotation;
+  mBounds = parent ? parent->mBounds : aRect;
+  mMargins = parent ? parent->mMargins : mMargins;
+  mNaturalBounds = parent ? parent->mNaturalBounds : aRect;
+  mSafeAreaInsets = parent ? parent->mSafeAreaInsets : mSafeAreaInsets;
+
+  BaseCreate(aParent, aInitData);
+
+  if (parent) {
+    parent->mChildren.AppendElement(this);
+  }
+
+  if (IsTopLevel()) {
+    LOGT("Append this to toplevel windows:%p", this);
+    gTopLevelWindows.AppendElement(this);
+  }
+
+  return NS_OK;
+}
+
+void
+PuppetWidgetBase::Destroy()
+{
+  LOGT();
+  if (mOnDestroyCalled) {
+    return;
+  }
+
+  mWidgetPaintTask.Revoke();
+  mOnDestroyCalled = true;
+
+  PuppetWidgetBase* parent =
+    dynamic_cast<PuppetWidgetBase*>(GetParent());
+
+  Base::OnDestroy();
+  Base::Destroy();
+
+  MOZ_ASSERT(mChildren.IsEmpty());
+  mChildren.Clear();
+
+  if (parent) {
+    parent->mChildren.RemoveElement(this);
+  }
+
+#if DEBUG
+  DumpWidgetTree();
+#endif
+}
+
+void
+PuppetWidgetBase::Show(bool aState)
+{
+  NS_ASSERTION(mEnabled,
+               "does it make sense to Show()/Hide() a disabled widget?");
+
+  if (Destroyed() || !WillShow(aState)) {
+    return;
+  }
+
+  LOGT("this:%p, state: %i", this, aState);
+
+  bool wasVisible = mVisible;
+  mVisible = aState;
+
+  if (Destroyed()) {
+    return;
+  }
+
+  if (!wasVisible && mVisible) {
+    UpdateBounds(false);
+    Invalidate(mBounds);
+  }
+
+#if DEBUG
+    // No point for dumping the tree for both show and hide calls.
+    if (aState) {
+      DumpWidgetTree();
+    }
+#endif
+}
+
+bool
+PuppetWidgetBase::IsVisible() const
+{
+  return mVisible;
+}
+
+void
+PuppetWidgetBase::ConstrainPosition(DesktopIntPoint& aPoint)
+{
+  aPoint.x = kMaxDimension;
+  aPoint.y = kMaxDimension;
+  LOGT();
+}
+
+// We're always at <0, 0>, and so ignore move requests.
+void
+PuppetWidgetBase::Move(const DesktopPoint& aPoint)
+{
+  (void)aPoint;
+
+  LOGNI();
+}
+
+void
+PuppetWidgetBase::Resize(const DesktopSize& aSize, bool aRepaint)
+{
+  if (Destroyed()) {
+    return;
+  }
+
+  LayoutDeviceIntRect oldBounds = mBounds;
+  LOGT("sz[%i,%i]->[%g,%g]", oldBounds.width, oldBounds.height,
+       aSize.width, aSize.height);
+
+  mBounds.y = 0;
+  mBounds.x = 0;
+  mBounds.SizeTo(
+    LayoutDeviceIntSize::Round(aSize * GetDesktopToDeviceScale()));
+
+  for (ObserverArray::size_type i = 0; i < mObservers.Length(); ++i) {
+    mObservers[i]->WidgetBoundsChanged(mBounds);
+  }
+
+  for (ChildrenArray::size_type i = 0; i < mChildren.Length(); i++) {
+    mChildren[i]->Resize(aSize, aRepaint);
+  }
+
+  if (aRepaint) {
+    Invalidate(mBounds);
+  }
+
+  nsIWidgetListener* listener =
+    mAttachedWidgetListener ? mAttachedWidgetListener : mWidgetListener;
+  if (!oldBounds.IsEqualEdges(mBounds) && listener) {
+    listener->WindowResized(this, mBounds.Size());
+  }
+}
+
+void
+PuppetWidgetBase::Resize(const DesktopRect& aRect, bool aRepaint)
+{
+  Resize(aRect.Size(), aRepaint);
+}
+
+void
+PuppetWidgetBase::Enable(bool aState)
+{
+  LOGT();
+  mEnabled = aState;
+}
+
+bool
+PuppetWidgetBase::IsEnabled() const
+{
+  LOGT();
+  return mEnabled;
+}
+
+void
+PuppetWidgetBase::SetFocus(Raise aRaise, mozilla::dom::CallerType aCallerType)
+{
+  (void) aRaise;
+  (void) aCallerType;
+  LOGT();
+}
+
+nsresult
+PuppetWidgetBase::SetTitle(const nsAString &aTitle)
+{
+  LOGNI();
+  return NS_ERROR_UNEXPECTED;
+}
+
+// PuppetWidgets are always at <0, 0>.
+mozilla::LayoutDeviceIntPoint
+PuppetWidgetBase::WidgetToScreenOffset()
+{
+  LOGT();
+  return LayoutDeviceIntPoint(0, 0);
+}
+
+float
+PuppetWidgetBase::GetDPI()
+{
+  nsIWidget* root = this;
+  while (root->GetParent()) {
+    root = root->GetParent();
+  }
+  return root == this ? nsIWidget::GetFallbackDPI() : root->GetDPI();
+}
+
+double
+PuppetWidgetBase::GetDefaultScaleInternal()
+{
+  nsIWidget* root = this;
+  while (root->GetParent()) {
+    root = root->GetParent();
+  }
+  return root == this ? nsIWidget::GetFallbackDefaultScale().scale
+                      : root->GetDefaultScaleInternal();
+}
+
+void
+PuppetWidgetBase::Invalidate(const LayoutDeviceIntRect &aRect)
+{
+  if (Destroyed() || aRect.IsEmpty() || !GetWindowRenderer() ||
+      mWidgetPaintTask.IsPending()) {
+    return;
+  }
+
+  mWidgetPaintTask = new WidgetPaintTask(this);
+  nsCOMPtr<nsIRunnable> event(mWidgetPaintTask.get());
+  if (NS_FAILED(SchedulerGroup::Dispatch(event.forget()))) {
+    mWidgetPaintTask.Revoke();
+  }
+}
+
+NS_IMETHODIMP
+PuppetWidgetBase::WidgetPaintTask::Run()
+{
+  if (mWidget) {
+    mWidget->Paint();
+  }
+  return NS_OK;
+}
+
+void
+PuppetWidgetBase::Paint()
+{
+  mWidgetPaintTask.Revoke();
+
+  if (Destroyed() || !GetWindowRenderer()) {
+    return;
+  }
+
+  RefPtr<PuppetWidgetBase> strongThis(this);
+
+  nsIWidgetListener* listener =
+    mAttachedWidgetListener ? mAttachedWidgetListener : mWidgetListener;
+  if (listener) {
+    listener->PaintWindow(this);
+  }
+}
+
+void
+PuppetWidgetBase::CaptureRollupEvents(bool aDoCapture)
+{
+  (void)aDoCapture;
+  LOGNI();
+}
+
+void
+PuppetWidgetBase::SetRotation(mozilla::ScreenRotation rotation)
+{
+  mRotation = rotation;
+
+  for (ObserverArray::size_type i = 0; i < mObservers.Length(); ++i) {
+    mObservers[i]->WidgetRotationChanged(mRotation);
+  }
+
+  for (ChildrenArray::size_type i = 0; i < mChildren.Length(); i++) {
+    mChildren[i]->SetRotation(rotation);
+  }
+
+#ifdef DEBUG
+  if (IsTopLevel()) {
+    DumpWidgetTree();
+  }
+#endif
+}
+
+void
+PuppetWidgetBase::SetMargins(const LayoutDeviceIntMargin &margins)
+{
+  mMargins = margins;
+  for (ChildrenArray::size_type i = 0; i < mChildren.Length(); i++) {
+    mChildren[i]->SetMargins(margins);
+  }
+}
+
+LayoutDeviceIntMargin
+PuppetWidgetBase::GetSafeAreaInsets() const
+{
+  return mSafeAreaInsets;
+}
+
+void
+PuppetWidgetBase::SetSafeAreaInsets(
+    const LayoutDeviceIntMargin &aSafeAreaInsets)
+{
+  if (mSafeAreaInsets == aSafeAreaInsets) {
+    return;
+  }
+
+  mSafeAreaInsets = aSafeAreaInsets;
+  for (ChildrenArray::size_type i = 0; i < mChildren.Length(); i++) {
+    mChildren[i]->SetSafeAreaInsets(aSafeAreaInsets);
+  }
+
+  if (mWidgetListener) {
+    mWidgetListener->SafeAreaInsetsChanged(aSafeAreaInsets);
+  }
+  if (mAttachedWidgetListener) {
+    mAttachedWidgetListener->SafeAreaInsetsChanged(aSafeAreaInsets);
+  }
+}
+
+void
+PuppetWidgetBase::DidClearParent(nsIWidget* aOldParent)
+{
+  if (PuppetWidgetBase* parent =
+        dynamic_cast<PuppetWidgetBase*>(aOldParent)) {
+    parent->mChildren.RemoveElement(this);
+  }
+}
+
+void
+PuppetWidgetBase::SetSize(double aWidth, double aHeight) {
+  LayoutDeviceIntRect oldBounds = mBounds;
+  LOGT("sz[%i,%i]->[%g,%g]", oldBounds.width, oldBounds.height, aWidth, aHeight);
+
+  mNaturalBounds.SizeTo(NSToIntRound(aWidth), NSToIntRound(aHeight));
+
+  for (ChildrenArray::size_type i = 0; i < mChildren.Length(); i++) {
+    mChildren[i]->SetSize(aWidth, aHeight);
+  }
+}
+
+void
+PuppetWidgetBase::UpdateBounds(bool aRepaint)
+{
+  const LayoutDeviceIntCoord zero(0);
+  int aWidth = 0;
+  int aHeight = 0;
+
+  if (mRotation == mozilla::ROTATION_0 || mRotation == mozilla::ROTATION_180) {
+    aWidth = std::max(0, mNaturalBounds.width -
+                         std::max(zero, mMargins.left) -
+                         std::max(zero, mMargins.right));
+    aHeight = std::max(0, mNaturalBounds.height -
+                          std::max(zero, mMargins.top) -
+                          std::max(zero, mMargins.bottom));
+  } else {
+    aWidth = std::max(0, mNaturalBounds.height -
+                         std::max(zero, mMargins.left) -
+                         std::max(zero, mMargins.right));
+    aHeight = std::max(0, mNaturalBounds.width -
+                          std::max(zero, mMargins.top) -
+                          std::max(zero, mMargins.bottom));
+  }
+
+  LayoutDeviceIntRect oldBounds = mBounds;
+  LOGT("sz[%i,%i]->[%i,%i]", oldBounds.width, oldBounds.height,
+       aWidth, aHeight);
+
+  mBounds.y = 0;
+  mBounds.x = 0;
+  mBounds.width = aWidth;
+  mBounds.height = aHeight;
+
+  for (ObserverArray::size_type i = 0; i < mObservers.Length(); ++i) {
+    mObservers[i]->WidgetBoundsChanged(mBounds);
+  }
+
+  for (ChildrenArray::size_type i = 0; i < mChildren.Length(); i++) {
+    mChildren[i]->UpdateBounds(aRepaint);
+  }
+
+  if (aRepaint) {
+    Invalidate(mBounds);
+  }
+
+  nsIWidgetListener* listener =
+    mAttachedWidgetListener ? mAttachedWidgetListener : mWidgetListener;
+  if (!oldBounds.IsEqualEdges(mBounds) && listener) {
+    listener->WindowResized(this, mBounds.Size());
+  }
+
+#ifdef DEBUG
+  DumpWidgetTree();
+#endif
+}
+
+void
+PuppetWidgetBase::SetActive(bool active)
+{
+  mActive = active;
+}
+
+void
+PuppetWidgetBase::NotifyBackingScaleFactorChanged()
+{
+  RefPtr<PuppetWidgetBase> self(this);
+  if (PresShell* presShell = GetPresShell()) {
+    presShell->BackingScaleFactorChanged();
+  }
+
+  AutoTArray<RefPtr<PuppetWidgetBase>, 4> children;
+  for (PuppetWidgetBase* child : mChildren) {
+    children.AppendElement(child);
+  }
+  for (PuppetWidgetBase* child : children) {
+    if (!child->Destroyed() && child->GetParent() == this) {
+      child->NotifyBackingScaleFactorChanged();
+    }
+  }
+}
+
+WindowRenderer *
+PuppetWidgetBase::GetWindowRenderer()
+{
+  if (Destroyed()) {
+    return nullptr;
+  }
+
+  return mWindowRenderer;
+}
+
+void PuppetWidgetBase::DumpWidgetTree()
+{
+  printf_stderr("PuppetWidgetBase Tree:\n");
+  DumpWidgetTree(gTopLevelWindows);
+}
+
+void PuppetWidgetBase::DumpWidgetTree(const nsTArray<PuppetWidgetBase *> &widgets, int indent)
+{
+  for (uint32_t i = 0; i < widgets.Length(); ++i) {
+    PuppetWidgetBase *w = widgets[i];
+    LogWidget(w, i, indent);
+    DumpWidgetTree(w->mChildren, indent + 2);
+  }
+}
+
+void PuppetWidgetBase::LogWidget(PuppetWidgetBase *widget, int index, int indent)
+{
+  char spaces[] = "                    ";
+  spaces[indent < 20 ? indent : 20] = 0;
+  printf_stderr("%s [% 2d] [%p = %s]  size: [(%d, %d), (%3d, %3d)], margins: [%d, %d, %d, %d], "
+                "visible: %d, type: %d, rotation: %d, observers: %zu\n",
+                spaces, index, widget, widget->Type(),
+                widget->mBounds.x, widget->mBounds.y,
+                widget->mBounds.width, widget->mBounds.height,
+                widget->mMargins.top.value, widget->mMargins.right.value,
+                widget->mMargins.bottom.value, widget->mMargins.left.value,
+                widget->mVisible, static_cast<int>(widget->mWindowType),
+                widget->mRotation * 90, widget->mObservers.Length());
+}
+
+PuppetWidgetBase::~PuppetWidgetBase()
+{
+  LOGT("this: %p", this);
+
+  if (IsTopLevel()) {
+    gTopLevelWindows.RemoveElement(this);
+  }
+}
+
+bool
+PuppetWidgetBase::WillShow(bool aState)
+{
+  return mVisible != aState;
+}
+
+bool
+PuppetWidgetBase::IsTopLevel()
+{
+  return mWindowType == widget::WindowType::TopLevel ||
+         mWindowType == widget::WindowType::Dialog ||
+         mWindowType == widget::WindowType::Invisible;
+}
+
+}  // namespace embedlite
+}  // namespace mozilla

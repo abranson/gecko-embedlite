@@ -1,0 +1,1076 @@
+* Thu Sep 10 2026 Andrew Branson <andrew.branson@jolla.com> - 153.2.0+git1
+- [browser] Rebase on 153.2.0
+- [embedlite] Set initial private content process type
+- [embedlite] Use one hosted parent runtime
+- [embedlite] Wait on the producer fence when acquiring frames
+- [rpm] Add Qt XDG profile support
+- [rpm] Bootstrap Gecko ESR153 patch stack
+- [rpm] Run host LLVM check outside SB2 mapping
+- [rpm] Update Gecko ESR153 dependency floors
+- [rpm] Use standard debug package suppression
+- [sailfishos] Refresh EmbedLite preferences for ESR153
+- [sailfishos][apz] Apply initial resolution before first paint
+- [sailfishos][build] Fix ARM OBS builds
+- [sailfishos][clipboard] Enforce native clipboard thresholds
+- [sailfishos][egl] Enable compositor fallback on Mesa
+- [sailfishos][egl] Restrict shared context fallback to compositors
+- [sailfishos][embedlite] Fix hosted picker responses
+- [sailfishos][embedlite] Guard reentrant window teardown
+- [sailfishos][embedlite] Initialize browsers with ESR153 window state
+- [sailfishos][embedlite] Initialize profile storage before services
+- [sailfishos][embedlite] Package BrowserWindowTracker
+- [sailfishos][embedlite] Port mouse synthesis to ESR153
+- [sailfishos][embedlite] Port remaining APIs to ESR153
+- [sailfishos][embedlite] Propagate display scale and DPI
+- [sailfishos][embedlite] Report canonical Fission state
+- [sailfishos][embedlite] Serialize messages once
+- [sailfishos][embedlite] Signal painted orientation changes
+- [sailfishos][embedlite] Use hosted frame message managers
+- [sailfishos][history] Enable BFCache with Android memory limits
+- [sailfishos][media] Keep EmbedLite media decoding local
+- [sailfishos][media] Move decoding into RDD and utility processes
+- [sailfishos][media] Port camera decoder APIs to ESR153
+- [sailfishos][neterror] Close popup certificate errors
+- [sailfishos][qt] Port remaining widget APIs to ESR153
+
+* Fri Aug 07 2026 Andrew Branson <andrew.branson@jolla.com> - 140.12.0+git1
+- [sailfishos][build] Avoid QEMU configure deadlock
+- [sailfishos][build] Fix ESR140 compilation blockers
+- [sailfishos][build] Fix ESR140 Qt and vendor patch integration
+- [sailfishos][build] Fix PipeWire guards and Cargo host compiler setup
+- [sailfishos][build] Fix Sailfish WebRTC video capture integration
+- [sailfishos][build] Isolate GTK WebGPU and disable ARM Rust LTO
+- [sailfishos][build] Keep DBusService GTK-only on Qt
+- [sailfishos][build] Port clipboard, RFP fonts, and WebRender flushing
+- [sailfishos][build] Port Qt icon channels and keep UPower GTK-only
+- [sailfishos][build] Port remaining EmbedLite and Qt widget APIs
+- [sailfishos][build] Share SB2 Rust environment across RPM stages
+- [sailfishos][embedlite] Fix ESR140 configure and IPC integration
+- [sailfishos][embedlite] Implement ESR140 XUL runtime accessors
+- [sailfishos][embedlite] Implement remaining ESR140 runtime accessors
+- [sailfishos][embedlite] Register components as ESM
+- [sailfishos][gecko] Fix package-manifest for ESR140
+- [sailfishos][gecko] Fold ESR140 follow-up patches
+- [sailfishos][gecko] Keep certificate error controls above the toolbar
+- [sailfishos][gecko] Port camera decoding and media lifecycle
+- [sailfishos][gecko] Port content actions, fullscreen, and video controls
+- [sailfishos][gecko] Port EmbedLite behavior patches to ESR140
+- [sailfishos][gecko] Port EmbedLite integration patches to ESR140
+- [sailfishos][gecko] Port EmbedLite offscreen WebRender compositing
+- [sailfishos][gecko] Port error, download, and search integration
+- [sailfishos][gecko] Port initial patch stack to ESR140
+- [sailfishos][gecko] Port libclang and glslopt build integration
+- [sailfishos][gecko] Port media, Qt controls, and support data
+- [sailfishos][gecko] Port native prompts and media lifecycle guards
+- [sailfishos][gecko] Port platform SQLite integration
+- [sailfishos][gecko] Port profile, viewport, and platform behavior
+- [sailfishos][gecko] Port Qt EGL and software WebRender integration
+- [sailfishos][gecko] Port WebRTC camera integration to ESR140
+- [sailfishos][ipc] Include the Qt message pump declaration
+- [sailfishos][sqlite] Export system SQLite boolean substitution
+- [sailfishos][sqlite] Generate AppConstant from define
+
+* Thu Aug 20 2026 Andrew Branson <andrew.branson@jolla.com> - 115.39.0+git1
+- [browser] Rebase on 115.39.0. JB#64961
+
+* Wed Aug 12 2026 Andrew Branson <andrew.branson@jolla.com> - 115.37.0+git6
+- [sailfishos][prompt] Allow beforeunload confirmation. Fixes JB#64866
+
+* Tue Aug 04 2026 Andrew Branson <andrew.branson@jolla.com> - 115.37.0+git5
+- [sailfishos][neterror] Restore certificate error handling. Fixes JB#64736
+
+* Tue Jul 28 2026 Matti Lehtimäki <matti.lehtimaki@jolla.com> - 115.37.0+git4
+- [sailfishos][egl] Unify Qt EGL display handling
+- [sailfishos][egl] Unify Qt EGL display handling. Fixes JB#64784
+- [sailfishos][media] Disable RDD for EmbedLite. Fixes JB#64794
+
+* Wed Jul 22 2026 Andrew Branson <andrew.branson@jolla.com> - 115.37.0+git3
+- [fix] Use Qt screen refresh rate for software vsync. Fixes JB#64781
+
+* Thu Jul 16 2026 Andrew Branson <andrew.branson@jolla.com> - 115.37.0+git2
+- [fix] Wait for EmbedLite windows before pre-destroy. JB#64487
+
+* Thu Jul 02 2026 Andrew Branson <andrew.branson@jolla.com> - 115.37.0+git1
+- [browser] Rebase on 115.37.0. JB#64655
+
+* Sat Jun 20 2026 Andrew Branson <andrew.branson@jolla.com> - 115.35.2+git5
+- [fix] Use system sqlite. Fixes JB#64528
+
+* Wed Jun 17 2026 Andrew Branson <andrew.branson@jolla.com> - 115.35.2+git4
+- [fix] Enable hardware video codec use. Fixes JB#64530
+
+* Wed Jun 17 2026 Andrew Branson <andrew.branson@jolla.com> - 115.35.2+git3
+- [fix] Add Gecko shutdown phase patch. Fixes JB#64487
+
+* Thu Jun 11 2026 Andrew Branson <andrew.branson@jolla.com> - 115.35.2+git2
+- [fix] Update EmbedLite mouse and title propagation. JB#64445
+
+* Fri May 29 2026 Andrew Branson <andrew.branson@jolla.com> - 115.35.2+git1
+- [feat] Upgrade to Gecko ESR 115.35.2 base. Fixes JB#62655
+
+* Mon May 11 2026 Matti Lehtimäki <matti.lehtimaki@jolla.com> - 91.13.1+git10
+- [sailfishos][gecko] Backport patches to fix build with glibc 2.43. JB#63834
+
+* Mon Apr 27 2026 Matti Lehtimäki <matti.lehtimaki@jolla.com> - 91.13.1+git9
+- [sailfishos][gecko] Disable debug symbols for arm build. JB#63834
+
+* Tue Mar 03 2026 Pami Ketolainen <pami.ketolainen@jolla.com> - 91.13.1+git8
+- [sailfishos][embedlite] Include missing default settings dumps. JB#63884
+
+* Mon Oct 20 2025 Matti Lehtimäki <matti.lehtimaki@jolla.com> - 91.13.1+git7
+- [sailfishos][gecko] Backport fixes for building with python 3.11. JB#61296
+
+* Wed Apr 23 2025 Matti Lehtimäki <matti.lehtimaki@jolla.com> - 91.13.1+git6
+- [sailfishos][gecko] Backport fix for building with newer rust-cbindgen. JB#62655
+
+* Fri Mar 14 2025 Pekka Vuorela <pekka.vuorela@jolla.com> - 91.13.1+git5
+- [sailfishos][gecko] Clear up message pump ownership. JB#62818
+
+* Mon Mar 10 2025 Matti Lehtimäki <matti.lehtimaki@jolla.com> - 91.13.1+git4
+- [sailfishos][gecko] Backport a fix to build against newer glibc. JB#49501
+
+* Sat Feb 08 2025 Matti Lehtimäki <matti.lehtimaki@jolla.com> - 91.13.1+git3
+- [sailfishos][gecko] Enable multi-threaded build also for rust. JB#62624
+- [sailfishos][gecko] Update content signature root hash. JB#63099
+
+* Tue Dec 10 2024 Matti Lehtimäki <matti.lehtimaki@jolla.com> - 91.13.1+git2
+- [sailfishos][embedlite] Fix uninitialized variable
+- [sailfishos][gecko] Fix rendering on devices which use mesa. JB#62698
+
+* Tue Oct 15 2024 Matti Lehtimäki <matti.lehtimaki@jolla.com> - 91.13.1+git1
+- [sailfishos][gecko] Update to 91.13.1. JB#62663
+
+* Thu Oct 10 2024 Pekka Vuorela <pekka.vuorela@jolla.com> - 90.9.1+git3
+- [sailfishos] Avoid some build warnings on the patches. JB#62639
+- [sailfishos][embedlite] Fix build warnings on embedding code. JB#62639
+
+* Fri Oct 04 2024 Matti Lehtimäki <matti.lehtimaki@jolla.com> - 90.9.1+git2
+- [sailfishos][gecko] Make only Rust compile single threaded. JB#62624
+
+* Thu Oct 03 2024 Raine Mäkeläinen <raine.makelainen@jolla.com> - 90.9.1+git1
+- [sailfishos][embedlite] Cleanup float preferences. JB#62618
+- [sailfishos][embedlite] Set default font for html & body. JB#62597
+- [sailfishos][embedlite] Set html & body padding and margin defaults to zero. JB#62598
+- [sailfishos][gecko] Suppress URLQueryStrippingListService.jsm error improvement
+
+* Sun Sep 29 2024 Raine Makelainen <raine.makelainen@jolla.com> - 90.9.1+git0
+- [sailfishos][build] Backport fixes for building with gcc 13 or newer. JB#62204
+- [sailfishos][build] Revert: Backport patches to fix build with rust 1.75. JB#61739
+- [sailfishos][embedlite] Fix AsyncPanZoomController fling state. JB#61045
+- [sailfishos][gecko] Add patches for ESR 91
+- [sailfishos][gecko] Backport fixes to build against newer glibc. JB#49501
+- [sailfishos][gecko] Update gecko-dev submodule to ESR 91
+
+* Thu Jun 13 2024 Matti Lehtimäki <matti.lehtimaki@jolla.com> - 78.15.1+git40
+- [sailfishos][build] Backport fixes for building with gcc 13 or newer. JB#62204
+
+* Sat Mar 16 2024 Matti Lehtimäki <matti.lehtimaki@jolla.com> - 78.15.1+git39
+- [sailfishos][build] Backport patches to fix build with rust 1.75. JB#61739
+- [sailfishos][build] Build using libclang.so.15. JB#61739
+
+* Tue Mar 12 2024 Matti Lehtimäki <matti.lehtimaki@jolla.com> - 78.15.1+git38
+- [sailfishos][build] Make header path symlink work with all gcc versions. JB#60722
+
+* Wed Jan 24 2024 Matti Lehtimäki <matti.lehtimaki@jolla.com> - 78.15.1+git37
+- [sailfishos][gecko] Backport fixes to build against newer glibc. JB#49501
+
+* Mon Jun 12 2023 Raine Mäkeläinen <raine.makelainen@jolla.com> - 78.15.1+git36
+- [sailfishos][embedlite] Enable dialog element. Fixes JB#60860
+
+* Thu Feb 09 2023 Matti Lehtimäki <matti.lehtimaki@jolla.com> - 78.15.1+git35
+- [sailfishos][gecko] Backport support for ffmpeg 5.0. JB#60117 JB#60086
+
+* Mon Feb 06 2023 Matti Lehtimäki <matti.lehtimaki@jolla.com> - 78.15.1+git34
+- [sailfishos][build] Disable some repeating compiler warnings.
+- [sailfishos][build] Update clang version. JB#58952
+
+* Wed Jan 18 2023 Raine Mäkeläinen <raine.makelainen@jolla.com> - 78.15.1+git33
+- [sailfishos][embedlite] Revert back white default background colors. Fixes JB#59906
+- [sailfishos][embedlite] Use grey default color for button background. Fixes JB#59906
+
+* Sat Nov 26 2022 David Llewellyn-Jones <david.llewellyn-jones@jolla.com> - 78.15.1+git32
+- [sailfishos][gecko] Add support for prefers-color-scheme. JB#58394
+
+* Wed Aug 24 2022 Raine Mäkeläinen <raine.makelainen@jolla.com> - 78.15.1+git31
+- [sailfishos][embedlite] Clean background gradients from input elements. Fixes JB#58457
+
+* Thu Apr 07 2022 David Llewellyn-Jones <david.llewellyn-jones@jolla.com> - 78.15.1+git30
+- [sailfishos][build] Add support for aarch64 to elfhack. JB#57563
+- [sailfishos][build] Enable elf-hack. Fixes JB#57563
+
+* Mon Apr 04 2022 David Llewellyn-Jones <david.llewellyn-jones@jolla.com> - 78.15.1+git29
+- [sailfishos][embedlite] Drop radio and checkbox max size restriction. Fixes JB#57693
+
+* Thu Mar 31 2022 David Llewellyn-Jones <david.llewellyn-jones@jolla.com> - 78.15.1+git28
+- [sailfishos][embedlite] Add a content controller stack. Fixes JB#57690
+
+* Fri Mar 11 2022 Raine Mäkeläinen <raine.makelainen@jolla.com> - 78.15.1+git27
+- [sailfishos][embedlite] Adapt partial build script to ESR78
+- [sailfishos][gecko] Initialise SVGGeometryProperty::ResolveAll parameters. JB#56892
+
+* Fri Feb 18 2022 Raine Mäkeläinen <raine.makelainen@jolla.com> - 78.15.1+git26
+- [sailfishos][embedlite] Prefer profile directory for search engines. Fixes JB#57275
+- [sailfishos][gecko] Do not remove debugging symbols
+
+* Tue Feb 15 2022 Raine Mäkeläinen <raine.makelainen@jolla.com> - 78.15.1+git25
+- [sailfishos][embedlite] Use the platform VPX decoder for WebRTC. JB#56755
+- [sailfishos][gecko] Add gecko-camera GraphicBuffer support. JB#56755
+- [sailfishos][gecko] Add support for gecko-camera GraphicBuffer, JB#56755
+
+* Thu Feb 03 2022 David Llewellyn-Jones <david.llewellyn-jones@jolla.com> - 78.15.1+git24
+- [sailfishos][gecko] Add a video decoder based on gecko-camera. JB#56755
+- [sailfishos][gecko-dev] Adapt to gecko-camera API change. JB#55457
+
+* Thu Jan 27 2022 Raine Mäkeläinen <raine.makelainen@jolla.com> - 78.15.1+git23
+- [sailfishos][embedlite] Disable system extension dirs. Fixes JB#52230
+- [sailfishos][gecko] Fix memory reporting of wasm memory. Fixes JB#56908
+- [sailfishos][gecko] Revert "Bug 1611386 - Drop support for --enable-system-sqlite". Contributes to JB#54800
+- [sailfishos][gecko][rpm] Use system sqlite. Fixes JB#54800
+- [sailfishos][rpm] Use system sqlite. Contributes to JB#54800
+
+* Thu Dec 23 2021 Raine Mäkeläinen <raine.makelainen@jolla.com> - 78.15.1+git22
+- [sailfishos][gecko-dev] Add preference to bypass CORS on nsContentSecurityManager. Fixes JB#56479 OMP#JOLLA-556
+
+* Wed Dec 22 2021 David Llewellyn-Jones <david.llewellyn-jones@jolla.com> - 78.15.1+git21
+- [sailfishos][embedlite] Pass double taps to embedhelper.js. JB#56765 OMP#JOLLA-607
+
+* Tue Dec 21 2021 Raine Mäkeläinen <raine.makelainen@jolla.com> - 78.15.1+git20
+- [sailfishos][embedlite] Load external uris directory via nsIExternalProtocolService. Fixes JB#56648 OMP#JOLLA-577
+
+* Mon Dec 20 2021 David Llewellyn-Jones <david.llewellyn-jones@jolla.com> - 78.15.1+git19
+- [sailfishos][gecko] Ensure zooming is always allowed if desktop mode is active. Fixes JB#56767 OMP#JOLLA-609
+
+* Fri Dec 17 2021 Marko Kenttälä <44089406+mkenttala@users.noreply.github.com> - 78.15.1+git18
+- [sailfishos][embedlite] Fix user agent notify. Fixes JB#56714 OMP#JOLLA-605
+
+* Fri Dec 17 2021 David Llewellyn-Jones <david.llewellyn-jones@jolla.com> - 78.15.1+git17
+- [sailfishos][gecko-dev] Ensure clipboard service can be accessed. Fixes JB#56647 OMP#JOLLA-578
+
+* Tue Dec 14 2021 Raine Mäkeläinen <raine.makelainen@jolla.com> - 78.15.1+git16
+- [sailfishos][gecko-dev] Fix video hardware accelaration not being used on first playback. JB#56630 OMP#JOLLA-568
+
+* Fri Dec 10 2021 Raine Mäkeläinen <raine.makelainen@jolla.com> - 78.15.1+git15
+- [sailfishos][embedlite] Pass parent browsing context down to CreateNewWindowRequested. JB#56631 OMP#JOLLA-569
+
+* Fri Dec 10 2021 Raine Mäkeläinen <raine.makelainen@jolla.com> - 78.15.1+git14
+- [sailfishos][rpm] Drop python2 dependency from xulrunner build. Fixes JB#56669 OMP#JOLLA-602
+
+* Fri Dec 03 2021 David Llewellyn-Jones <david.llewellyn-jones@jolla.com> - 78.15.1+git13
+- [sailfishos][embedlite][egl] Fix egl patch to prevent crashing. Fixes JB#56606 OMP#JOLLA-565
+
+* Wed Dec 01 2021 David Llewellyn-Jones <david.llewellyn-jones@jolla.com> - 78.15.1+git12
+- [sailfishos][embedlite][egl] Fix mesa egl display and buffer initialisation. Fixes JB#56215 OMP#JOLLA-512
+
+* Wed Dec 01 2021 Andrew den Exter <andrew.den.exter@jolla.com> - 78.15.1+git11
+- [sailfishos][embedlite] Make EmbedFrame an EventListener. JB#56094 OMP#JOLLA-492
+
+* Tue Nov 30 2021 Raine Mäkeläinen <raine.makelainen@jolla.com> - 78.15.1+git10
+- [sailfishos][rpm] Re-enable startup cache for all arch except x86. Fixes JB#55488 OMP#JOLLA-374
+
+* Thu Nov 25 2021 Raine Mäkeläinen <raine.makelainen@jolla.com> - 78.15.1+git9
+- [sailfishos][embedlite] Drop root frame argument from the PEmbedLiteView.ipdl and EmbedLiteViewListener::HandleScrollEvent. JB#56312 OMP#JOLLA-530
+- [sailfishos][embedlite] Read scrollable rect from frame metrics of root layer. Fixes JB#56313 OMP#JOLLA-531
+
+* Tue Nov 23 2021 Raine Mäkeläinen <raine.makelainen@jolla.com> - 78.15.1+git8
+- [sailfishos][embedlite] Http max-connections to 40. Fixes JB#56477 OMP#JOLLA-555
+
+* Fri Nov 19 2021 Raine Mäkeläinen <raine.makelainen@jolla.com> - 78.15.1+git7
+- [sailfishos][gecko] Fix audio underruns for the fullduplex mode. JB#56317
+- [sailfishos][gecko] Restart the camera when changing the resolution. JB#56415
+
+* Wed Nov 17 2021 Raine Mäkeläinen <raine.makelainen@jolla.com> - 78.15.1+git6
+- [sailfishos][embedlite] Add task reference to FIXME. JB#56313 OMP#JOLLA-531
+- [sailfishos][embedlite] Cleanup already fixed FIXME
+- [sailfishos][embedlite] Guard against null pointer dereference when calling OnDynamicToolbarHeightChanged. Fixes JB#56411
+- [sailfishos][embedlite] Prevent invalid manifest location from being added. Fixes JB#56395
+
+* Mon Nov 15 2021 Raine Mäkeläinen <raine.makelainen@jolla.com> - 78.15.1+git5
+- [sailfishos][embedlite] Drop embedlite specific History listener. JB#55773 OMP#JOLLA-424
+- [sailfishos][rpm] Fix patch numbering. JB#55773 OMP#JOLLA-424
+- [sailfishos][rpm] Format patches with --zero-commit. Fixes JB#55773 OMP#JOLLA-424
+- [sailfishos][rpm] Revert 'Remove static registration of Remove static registration of the 'mozilla/places/History.h' module'. JB#55773 OMP#JOLLA-424
+
+* Mon Nov 15 2021 Raine Mäkeläinen <raine.makelainen@jolla.com> - 78.15.1+git4
+- [sailfishos][embedlite] Enable the pointer event API. JB#56149 OMP#JOLLA-499
+- [sailfishos][embedlite] Enable VisualViewport API. JB#56066 OMP#JOLLA-479
+- [sailfishos][gecko-dev] Enable the pointer event API. JB#56149 OMP#JOLLA-499
+- [sailfishos][gecko] Enable the pointer event API. JB#56149 OMP#JOLLA-499
+- [sailfishos][gecko] Fix default font size. JB#56120 OMP#JOLLA-496
+
+* Wed Nov 10 2021 Raine Mäkeläinen <raine.makelainen@jolla.com> - 78.15.1+git3
+- [sailfishos][embedlite] Implement nsIWidget methods in nsWindow.cpp. Contributes to JB#54190
+- [sailfishos][gecko] Remove nsWidget.h/cpp and mozqwidget.h/cpp from widget/qt. Contributes to JB#54190
+
+* Tue Nov 09 2021 Raine Mäkeläinen <raine.makelainen@jolla.com> - 78.15.1+git2
+- [sailfishos][gecko] Fix download starting when multiple tabs are closed. JB#56047 OMP#JOLLA-476
+
+* Mon Nov 08 2021 Raine Mäkeläinen <raine.makelainen@jolla.com> - 78.15.1+git1
+- [sailfishos][embedlite] Set ScreenManager's screen properties. JB#56165 OMP#JOLLA-502
+- [sailfishos][gecko] Bump up to latest 78.15.1 sha1. Fixes JB#55681 OMP#JOLLA-402
+
+* Wed Nov 03 2021 David Llewellyn-Jones <david.llewellyn-jones@jolla.com> - 78.11.0+git15
+- [sailfishos][docshell] Create CanonicalBrowsingContext. JB#56074 OMP#JOLLA-482
+- [sailfishos][embedlite] Create Secure Browser UI. Fixes JB#56074 OMP#JOLLA-482
+- [sailfishos][embedlite] Fix crash in EmbedLiteSecurity. JB#56074 OMP#JOLLA-482
+- [sailfishos][gecko] Allow LoginManagerPrompter to find its window. JB#55760 OMP#JOLLA-418
+
+* Wed Nov 03 2021 Chris Adams <chris.adams@jolla.com> - 78.11.0+git14
+- [sailfishos][embedlite] Remove unused variable. Contributes to JB#55799
+
+* Wed Nov 03 2021 Andrew den Exter <andrew.den.exter@jolla.com> - 78.11.0+git13
+- [sailfishos][gecko] Enable support for WebRTC. JB#55222 OMP#JOLLA-295
+
+* Mon Nov 01 2021 Andrew den Exter <andrew.den.exter@jolla.com> - 78.11.0+git12
+- [sailfishos][embedlite] Fix EmbedLiteSecurity compiler warnings. JB#56072 OMP#JOLLA-481
+- [sailfishos][embedlite] Remove unused ContentListener class. JB#56086 OMP#JOLLA-487
+
+* Thu Oct 28 2021 Andrew den Exter <andrew.den.exter@jolla.com> - 78.11.0+git11
+- [sailfishos][gecko] Fix media elements being suspended on the active tab. JB#56081 OMP#JOLLA-488
+
+* Thu Oct 28 2021 Andrew den Exter <andrew.den.exter@jolla.com> - 78.11.0+git10
+- [sailfishos][gecko-dev] Fix timeouts when querying location. JB#56073 OMP#JOLLA-483
+
+* Wed Oct 27 2021 Marko Kenttälä <44089406+mkenttala@users.noreply.github.com> - 78.11.0+git9
+- [sailfishos][browserchild] Add parentIsActive attribute to the nsIBrowserChild. Fixes JB#56063 OMP#JOLLA-474
+- [sailfishos][embedlite] Enable serviceworkers. JB#49179 OMP#JOLLA-473
+- [sailfishos][embedlite] Guard access to EmbedLiteViewChildIface in BrowserChildHelper. Contributes to JB#56037
+- [sailfishos][embedlite] Set valid webnavigation for the BrowserChildHelper. Fixes JB#56063 OMP#JOLLA-474
+- [sailfishos][gecko] Fix nsIBrowserChild activity status receiving in nsFocusManager. Contributes to JB#56037
+
+* Mon Oct 25 2021 Raine Makelainen <raine.makelainen@jolla.com> - 78.11.0+git8
+- [sailfishos][embedlite] Enable touch event legacy apis. JB#56029 OMP#JOLLA-462
+- [sailfishos][embedlite] Update dynamic toolbar offset. Fixes JB#56014 OMP#JOLLA-459
+- [sailfishos][gecko] Adapt safemode patch. Fixes JB#55764 OMP#JOLLA-422
+- [sailfishos][gecko] Patching not needed for reCAPTCHA in esr78. JB#55762 OMP#JOLLA-419
+- [sailfishos][rpm] Adapt safemode patch. Fixes JB#55764 OMP#JOLLA-422
+
+* Wed Oct 20 2021 David Llewellyn-Jones <david.llewellyn-jones@jolla.com> - 78.11.0+git7
+- [sailfishos][gecko] Reformat patch to allow git am to work
+- [sailfishos][sidebar] Load sidebar for embedlite as well. Fixes JB#55980 OMP#JOLLA-454
+
+* Tue Oct 19 2021 Raine Mäkeläinen <raine.makelainen@jolla.com> - 78.11.0+git6
+- [sailfishos][embedlite] Add a separate method to set the height of the area overlapped by the toolbar. Contributes to JB#55896
+- [sailfishos][embedlite] Add scrolling of focused text input field to the visible area when changing view margins. Contributes to JB#55896
+- [sailfishos][embedlite] Remove unused EmbedLiteViewBaseChild::RecvSetVirtualKeyboardHeight. Contributes to JB#55264
+- [sailfishos][embedlite] Remove unused EmbedLiteViewBaseChild::ScrollInputFieldIntoView. Contributes to JB#55896
+- [sailfishos][embedlite] Setting view margins by changing nsBaseWidget::mBounds. Contributes to JB#55896
+- [sailfishos][embedlite] Use OS agnostic user-agent. Fixes JB#55932 OMP#JOLLA-446
+- [sailfishos][ua] Do not replace platform name. JB#55932 OMP#JOLLA-446
+
+* Mon Oct 18 2021 Raine Mäkeläinen <raine.makelainen@jolla.com> - 78.11.0+git5
+- [sailfishos][rpm] Move old patches out of rpm directory. Fixes JB#55984 OMP#JOLLA-455
+
+* Thu Oct 14 2021 Raine Mäkeläinen <raine.makelainen@jolla.com> - 78.11.0+git4
+- [sailfishos][embedlite] Cleanup DrawWindowUnderlay and DrawUnderlay. JB#55708 OMP#JOLLA-403
+- [sailfishos][embedlite] Use StaticXREAppData to read application.ini. Fixes JB#55883 OMP#JOLLA-436
+- [sailfishos][gecko] Use only embedlite clipboard. JB#55607 OMP#JOLLA-399
+- [sailfishos][gfx] Use scroll frame background color as clear color. Fixes JB#55708 OMP#JOLLA-403
+
+* Mon Oct 11 2021 Raine Mäkeläinen <raine.makelainen@jolla.com> - 78.11.0+git3
+- [sailfishos][audio] Bring back "pulse" cubeb backend. Fixes JB#55765 OMP#JOLLA-423
+- [sailfishos][components] Cleanup app-info from xre/components.conf. JB#55835 OMP#JOLLA-433
+- [sailfishos][components] Cleanup static components definitions. JB#55835 OMP#JOLLA-433
+- [sailfishos][embedlite] Add string formatted component CID in comments
+- [sailfishos][embedlite] Define EmbedLiteXulAppInfo as static component. Fixes JB#55835 OMP#JOLLA-433
+
+* Mon Oct 11 2021 Raine Mäkeläinen <raine.makelainen@jolla.com> - 78.11.0+git2
+- [sailfishos][configure] Update submodule to new gecko-dev mirror. Fixes JB#55712 OMP#JOLLA-406
+- [sailfishos][embedlite] Add const qualifier to EmbedLiteAppChildIface::Get* methods. Contributes to JB#54615
+- [sailfishos][embedlite] Add methods to get current number of EmbedLiteApp views and windows. Contributes to JB#54813
+- [sailfishos][embedlite] Add support for text replacing in text event handler. Contributes to JB#55264
+- [sailfishos][embedlite] Allow current window id to be retrieved. JB#54218 OMP#JOLLA-135
+- [sailfishos][embedlite] Allow EmbedLiteApp window re-creation. Contributes to JB#54813
+- [sailfishos][embedlite] Cherry-pick EmbedLiteAppChild changes from master. JB#55295 OMP#JOLLA-313
+- [sailfishos][embedlite] Cleanup DrawWindowOverlay. JB#55709 OMP#JOLLA-404
+- [sailfishos][embedlite] Define extensions.systemAddon.update.enabled as false. Fixes JB#55751 OMP#JOLLA-416
+- [sailfishos][embedlite] Do not destroy uninitialized PEmbedLiteView. Contributes to JB#54813
+- [sailfishos][embedlite] Do not destroy uninitialized PEmbedLiteWindow. Contributes to JB#54813
+- [sailfishos][embedlite] Fix child actor services not receiving events. JB#55484 OMP#JOLLA-371
+- [sailfishos][embedlite] Fix flickering on animated web page in a web view. Fixes JB#54826 OMP#JOLLA-226
+- [sailfishos][embedlite] Introduce back DestroyBrowserWindow method implementation. Fixes JB#55501 OMP#JOLLA-386
+- [sailfishos][embedlite] Pass EmbedLiteWindowListener pointer to PEmbedLiteWindowConstructor. Contributes to JB#54813
+- [sailfishos][embedlite] Pass parent browsing context to the view. JB#55501 OMP#JOLLA-386
+- [sailfishos][embedlite] Prevent null pointer dereference in PuppetWidgetBase::Invalidate. Fixes JB#54517
+- [sailfishos][embedlite] Provide KeyNameIndex and CodeNameIndex for WidgetKeyboardEvent. Contributes to JB#55108
+- [sailfishos][embedlite] Reset toolbar height after vkb closes. Fixes JB#55497 OMP#JOLLA-382
+- [sailfishos][embedlite] Set BrowsingContext to private mode before attaching it. JB#55492 OMP#JOLLA-377
+- [sailfishos][embedlite] Switch LOGNI() for LOGT() in places
+- [sailfishos][embedlite] Synchronize puppet widget margins change. Contributes to JB#51962
+- [sailfishos][embedlite] Use dynamic toolbar height API to set bottom margin. Contributes to JB#51962
+- [sailfishos][embedlite] Use std::map::find to get view pointer in EmbedLiteAppChild::GetViewByID. Contributes to JB#54615
+- [sailfishos][gecko] Add ESR68 WebRTC patches into old_patches. JB#55228 OMP#JOLLA-298
+- [sailfishos][gecko] Apply unchanged patches. JB#55228 OMP#JOLLA-298
+- [sailfishos][gecko] Reapply patch: "Configure application as mobile/sailfishos". JB#55228 OMP#JOLLA-298
+- [sailfishos][gecko] Reapply patch: "Delete startupCache if it's stale". JB#55228 OMP#JOLLA-298
+- [sailfishos][gecko] Reapply patch: "Disable loading heavier extensions". JB#55228 OMP#JOLLA-298
+- [sailfishos][gecko] Reapply patch: "Do not flip scissor rects when...". JB#55228 OMP#JOLLA-298
+- [sailfishos][gecko] Reapply patch: "Embedlite doesn't have prompter implementation". JB#55228 OMP#JOLLA-298
+- [sailfishos][gecko] Reapply patch: "Ensure audio continues when screen is locked". JB#55228 OMP#JOLLA-298
+- [sailfishos][gecko] Reapply patch: "Fix content action integration to work". JB#55228 OMP#JOLLA-298
+- [sailfishos][gecko] Reapply patch: "Fix flipped FBO textures when rendering to an offscreen target". JB#55228 OMP#JOLLA-298
+- [sailfishos][gecko] Reapply patch: "Get 12/24h timeformat setting from dconf". JB#55228 OMP#JOLLA-298
+- [sailfishos][gecko] Reapply patch: "Handle temporary directory similarly as in MacOSX". JB#55228 OMP#JOLLA-298
+- [sailfishos][gecko] Reapply patch: "Hardcode loopback address for profile lock filename". JB#55228 OMP#JOLLA-298
+- [sailfishos][gecko] Reapply patch: "Hide accessible carets also with touch select all event". JB#55228 OMP#JOLLA-298
+- [sailfishos][gecko] Reapply patch: "Make fullscreen enabling work...". JB#55228 OMP#JOLLA-298
+- [sailfishos][gecko] Reapply patch: "Prioritize loading of extension versions...". JB#55228 OMP#JOLLA-298
+- [sailfishos][gecko] Reapply patch: "Skip invalid WatchId in geolocation.clearWatch()". JB#55228 OMP#JOLLA-298
+- [sailfishos][gecko] Reapply patch: "Start using user-agent builder". JB#55228 OMP#JOLLA-298
+- [sailfishos][gecko] Reapply patch: "Suppress LoginManagerContent.jsm ownerDocument errors". JB#55228 OMP#JOLLA-298
+- [sailfishos][gecko] Reapply patch: "Use libcontentaction for custom scheme uri handling". JB#55228 OMP#JOLLA-298
+- [sailfishos][gecko] Remove redundant patches. JB#55228 OMP#JOLLA-298
+- [sailfishos][gecko] Remove redundant patch. JB#55228 OMP#JOLLA-298
+- [sailfishos][gecko] Revert "Bug 1494175 - Remove unimplementet nsIWebBrowserChrome methods. r=qdot". JB#55501 OMP#JOLLA-386
+- [sailfishos][gecko] Tidy up patch. JB#55228 OMP#JOLLA-298
+- [sailfishos][media] Ensure audio continues when screen is locked.
+- [sailfishos][packaging] Workaround for .git directory in submodule JB#54219 OMP#JOLLA-136
+
+* Wed Sep 29 2021 Raine Mäkeläinen <raine.makelainen@jolla.com> - 78.11.0+git1
+- [sailfishos][contentcontrollre] Use MessageLoop to forward events. JB#55326 OMP#JOLLA-327
+- [sailfishos][egl] Drop swap_buffers_with_damage extension support. Fixes JB#55571 OMP#JOLLA-396
+- [sailfishos][embedlite] Adapt EmbedLiteViewChild::RecvHandleSingleTap to APZEventState::ProcessSingleTap. Fixes JB#55326 OMP#JOLLA-327
+- [sailfishos][embedlite] Adapt package-manifest.in from Android FF. Fixes JB#55467 OMP#JOLLA-358
+- [sailfishos][embedlite] Add dummy preprocessor directive. Fixex JB#55306 OMP#JOLLA-322
+- [sailfishos][embedlite] Adjust embed scroll style. Fixex JB#55306 OMP#JOLLA-322
+- [sailfishos][embedlite] Call ViewportUtils::GetVisualToLayoutTransform to touch point position. Fixes JB#55472 OMP#JOLLA-365
+- [sailfishos][embedlite] Fix a crash when trying to a acquire a wake lock. Fixes JB#55481 OMP#JOLLA-368
+- [sailfishos][embedlite] Fix MessageManagerCallback overrides. Fixes JB#55464 OMP#JOLLA-356
+- [sailfishos][embedlite] Fix search plugin directories. JB#55267 OMP#JOLLA-304
+- [sailfishos][embedlite] Use GetTopLevelPresShell for ApplyPointTransform. Fixes JB#55472 OMP#JOLLA-365
+- [sailfishos][gecko] Adapt GMP patches from ESR60. JB#55479 OMP#JOLLA-366
+- [sailfishos][gecko] Fix delivery of MozAfterPaint events. JB#55286 OMP#JOLLA-310
+- [sailfishos][packaging] Avoid stripping debug symbols during final link step on arm. JB#55074 OMP#JOLLA-269
+- [sailfishos][packaging] Disable startupCache for all architectures. Fixes JB#55487 OMP-JOLLA-373
+
+* Mon Sep 06 2021 Niels Breet <niels.breet@jolla.com> - 78.11.0+git0
+- [sailfishos][compositor] Adapt EmbedLiteCompositorBridgeParent to CompositorBridgeParent. Contributes to JB#54259
+- [sailfishos][compositor] Adapt patch "Allow compositor specializations to override the composite (part 2)". Contributes to JB#54259
+- [sailfishos][compositor] Backport "Create EmbedLiteCompositorBridgeParent in CompositorManagerParent" JB#55192 OMP#JOLLA-286
+- [sailfishos][configure] Align cross-linker to work with sb2
+- [sailfishos][configure] Configure build environment
+- [sailfishos][configure] Disable LTO for rust 1.52.1 with ESR78. JB#53019 OMP#JOLLA-93
+- [sailfishos][configure] Expose elf32-i386 libclang.so.10 to arm target. JB#55042
+- [sailfishos][configure] Expose sb2 target to build process
+- [sailfishos][configure] Expose std headers in separate folder. JB#55058
+- [sailfishos][configure] Get the target and host from the environment
+- [sailfishos][configure] Patch glslopt to build on arm. JB#55037
+- [sailfishos][configure] Patch libloading to build on arm.
+- [sailfishos][configure] Reduce libxul.so link step memory. JB#55074
+- [sailfishos][configure] Skip min_libclang_version test during configuration. JB#55042
+- [sailfishos][contentcontroller] Dispatch to ui thread only if not already there. Fixes JB#55288 OMP#JOLLA-311
+- [sailfishos][docshell] Get ContentFrameMessageManager via nsIDocShellTreeOwner. JB#55336 OMP#55336
+- [sailfishos][egl] Backport display fixes. JB#55226 OMP#JOLLA-296
+- [sailfishos][egl] Fix mesa egl display initialisation
+- [sailfishos][embedlite] Adapt BrowserChildHelper to nsIBrowserChild. Contributes to JB#53390
+- [sailfishos][embedlite] Adapt code from EmbedLiteViewBaseChild/Parent to EmbedLiteViewChild/Parent. JB#54983 OMP#JOLLA-261
+- [sailfishos][embedlite] Adapt EmbedContentController to GeckoContentController. Fixes JB#54322
+- [sailfishos][embedlite] Adapt EmbedHistoryListener to IHistory. Fixes JB#54239
+- [sailfishos][embedlite] Adapt EmbedLiteAppBaseChild to PEmbedLiteAppChild. Fixes JB#53215
+- [sailfishos][embedlite] Adapt EmbedLiteCompositorProcessParent to CompositorBridgeParent. Fixes JB#54357
+- [sailfishos][embedlite] Adapt embedlite/installer/Makefile.in for esr78. Fixes JB#54389
+- [sailfishos][embedlite] Adapt EmbedLiteJSON. Fixes JB#54360
+- [sailfishos][embedlite] Adapt embedlite nsEmbedClipboard. Fixes JB#54302, JB#54303
+- [sailfishos][embedlite] Adapt embedlite utils for esr78. Fixes JB#54339
+- [sailfishos][embedlite] Adapt EmbedLiteViewBaseChild to PEmbedLiteViewChild. Fixes JB#53209
+- [sailfishos][embedlite] Adapt EmbedLiteViewBaseParent to PEmbedLiteViewParent. Fixes JB#53393
+- [sailfishos][embedlite] Adapt EmbedLiteViewParent to IAPZCTreeManager. Fixes JB#54246
+- [sailfishos][embedlite] Adapt EmbedLiteWindowBaseChild to PEmbedLiteWindowChild. Fixes JB#53400
+- [sailfishos][embedlite] Adapt EmbedLiteWindowBaseParent to PEmbedLiteWindowParent. Fixes JB#53394
+- [sailfishos][embedlite] Adapt EmbedLiteXulAppInfo to nsIXULAppInfo and nsIXULRuntime. Contributes to JB#54339
+- [sailfishos][embedlite] Adapt embed modules for esr78
+- [sailfishos][embedlite] Adapt embed process for esr78
+- [sailfishos][embedlite] Adapt embed shared for esr78
+- [sailfishos][embedlite] Adapt nsEmbedClipboard to nsTransferable. Fixes JB#54302
+- [sailfishos][embedlite] Adapt nsIDOMWindowUtils getter calls. Fixes JB#55331 OMP#JOLLA-328
+- [sailfishos][embedlite] Adapt nsWindow to nsBaseWidget. Fixes JB#54243
+- [sailfishos][embedlite] Adapt TabChildHelper for gecko esr78. Fixes JB#53390
+- [sailfishos][embedlite] Add an API to load desktop version of the site. Contributes to JB#50924
+- [sailfishos][embedlite] Add DispatchMessageManagerMessage implementation to BrowserChildHelper. Contributes to JB#53390
+- [sailfishos][embedlite] Add '--enable-default-toolkit=cairo-qt' option back to the mozconfig.merqtxulrunner. Contributes to JB#52899
+- [sailfishos][embedlite] Add including of PrefsTypes to PEmbedLiteApp.ipdl. Contributes to JB#53054
+- [sailfishos][embedlite] Add input field scrolling to visible area when keyboard appears. Contributes to JB#51962
+- [sailfishos][embedlite] Add passing of vsync rate when constructing LayerTransactionParent. Fixes JB#54371
+- [sailfishos][embedlite] Add 'using namespace mozilla::dom;' to WebBrowserChrome.cpp. Contributes to JB#53218
+- [sailfishos][embedlite] Add 'using namespace mozilla;' to EmbedLog.cpp. Fixes JB#54254
+- [sailfishos][embedlite] Add WebBrowserChrome::OnContentBlockingEvent implementation. Contributes to JB#54339
+- [sailfishos][embedlite] Cleanup embedding/embedlite/Makefile.in DEFINES. JB#53003
+- [sailfishos][embedlite] Comment out nsPIDOMWindowInner::Freeze and nsPIDOMWindowInner::Thaw usage. Fixes JB#54376
+- [sailfishos][embedlite] Comment out Preferences::GetPreferences usage. Fixes JB#54346
+- [sailfishos][embedlite] Configure as mobile/sailfishos. JB#52893
+- [sailfishos][embedlite] Configure embedlite without tests and marionette. Fixes JB#54148 OMP#JOLLA-117
+- [sailfishos][embedlite] Construct WidgetTouchEvent object in-place. Fixes JB#54374
+- [sailfishos][embedlite] Convert nsEmbedHistoryModule to static registration. Contributes to JB#54255
+- [sailfishos][embedlite] Convert nsEmbedHistoryModule to static registration. Fixes JB#54255
+- [sailfishos][embedlite] Convert nsEmbedWidgetFactoryModule to static registration. Fixes JB#54256
+- [sailfishos][embedlite] Create BrowserChildHelper early enough. JB#55336 OMP#JOLLA-331
+- [sailfishos][embedlite] Create web browser object trough nsWebBrowser::Create. Fixes JB#54381
+- [sailfishos][embedlite] Define with-app-name=xulrunner-qt5 in mozconfig.merqtxulrunner. Fixes JB#54153
+- [sailfishos][embedlite] Disable embedLiteCoreInitTest and embedLiteViewInitTest. Fixes JB#54403
+- [sailfishos][embedlite] Disable layers.progressive-paint. JB#55227 OMP#JOLLA-297
+- [sailfishos][embedlite] Disable WebRTC support for now. Fixes JB#54111
+- [sailfishos][embedlite] Do not call NS_LogTerm upon InitEmbedding. JB#54988 OMP#JOLLA-263
+- [sailfishos][embedlite] Don't use MessageLoop threads with APZ. Fixes JB#54324
+- [sailfishos][embedlite] Enable CCS touch action handling to EmbedLiteViewChild. Fixes JB#55298 OMP#JOLLA-314
+- [sailfishos][embedlite] Explicitly include unistd.h for getpid(). Contributes to JB#54339
+- [sailfishos][embedlite] Export mozsqlite3 library to base package. Contributes to JB#54390
+- [sailfishos][embedlite] Fix crash coming RecvSetIsActive calling RecvScheduleUpdate. Fixes JB#55281 OMP#JOLLA-312
+- [sailfishos][embedlite] Fix crash from EmbedLiteAppService::GetIDByWindow. Fixes JB#55301 OMP#JOLLA-317
+- [sailfishos][embedlite] Fix crash from EmbedLiteViewChild::RecvSetIsActive. JB#55226 OMP#JOLLA-296
+- [sailfishos][embedlite] Fix CreateExposableURI call in WebBrowserChrome::OnLocationChange. Contributes to JB#54339
+- [sailfishos][embedlite] Fix EmbedLiteViewChild::RecvSuspendTimeouts and EmbedLiteViewChild::RecvResumeTimeouts. Fixes JB#54377 OMP#JOLLA-245
+- [sailfishos][embedlite] Fix EmbedWidgetFactoryRegister init. JB#55304 OMP#JOLLA-320
+- [sailfishos][embedlite] Fix empty nspr version requirement in libxul.pc. Contributes to JB#54390
+- [sailfishos][embedlite] Fix flipped FBO textures when rendering to an offscreen window. Fixes JB#54419 OMP#JOLLA-179
+- [sailfishos][embedlite] Fix for progress listener. JB#55235 OMP#JOLLA-299
+- [sailfishos][embedlite] Fix getting pointer to nsPresContext trough nsIDocShell in BrowserChildHelper. Contributes to JB#53390
+- [sailfishos][embedlite] Fix including of EmbedLiteView.h in EmbedLiteViewIface.idl. Fixes JB#53395
+- [sailfishos][embedlite] Fix InitializeUserPrefs call in GeckoLoader::InitEmbedding. Contributes to JB#54339
+- [sailfishos][embedlite] Fix JS_ReadStructuredClone calls in BrowserChildHelper. Contributes to JB#53390
+- [sailfishos][embedlite] Fix LayerManager::BeginTransaction override in EmbedLiteAppProcessParentManager. Fixes JB#54358
+- [sailfishos][embedlite] Fix LogModule initialization in EmbedLiteApp. Fixes JB#54328
+- [sailfishos][embedlite] Fix mesa egl display initialisation
+- [sailfishos][embedlite] Fix nsFrameMessageManager usage in BrowserChildHelper. Contributes to JB#53390
+- [sailfishos][embedlite] Fix nsMessageManagerScriptExecutor::LoadScriptInternal usage in BrowserChildHelper. Contributes to JB#53390
+- [sailfishos][embedlite] Fix overriding of nsIWidget::SetFocus in PuppetWidgetBase. Fixes JB#53392
+- [sailfishos][embedlite] Fix path to packager.mk. Contributes to JB#54389
+- [sailfishos][embedlite] Get rid of nsIDOMScrollAreaEvent. Contributes to JB#54339
+- [sailfishos][embedlite] Get rid of nsIWindowCreator2. Contributes to JB#54339
+- [sailfishos][embedlite] Group the results of APZInputBridge::ReceiveInputEvent into a struct. Fixes JB#54323
+- [sailfishos][embedlite] Implement BrowserChildHelperMessageManager for BrowserChildHelper. Contributes to JB#53390
+- [sailfishos][embedlite] Include embedlite directory in the project through the symlink '/mobile/sailfishos'. Contributes to JB#53003
+- [sailfishos][embedlite] Initialize profiler properly. Fixes JB#54988 OMP#JOLLA-263
+- [sailfishos][embedlite] Introduce EmbedLiteAppParent interface. Fixes JB#53389
+- [sailfishos][embedlite] Move ContentFrameMessageManager usage in EmbedFrame under mozilla::dom namespace. Fixes JB#54338
+- [sailfishos][embedlite] Pass aTargets to NewRunnableMethod in RecvSetTargetAPZC by rvalue reference. Fixes JB#54388
+- [sailfishos][embedlite] Pass LayersId object to SendPLayerTransactionConstructor. Fixes JB#54370
+- [sailfishos][embedlite] Pass LayersId to SendSetTargetAPZCNotification instead of ScrollableLayerGuid. Fixes JB#54385
+- [sailfishos][embedlite] Pass nsTArray to aServerCert->GetRawDER call in EmbedLiteSecurity::importState. Contributes to JB#54339
+- [sailfishos][embedlite] Provide BrowsingContext for nsWebBrowser::Create. JB#54382 OMP#JOLLA-247
+- [sailfishos][embedlite] Reduce usage of mozilla::layers::FrameMetrics in embedlite. Fixes JB#54321
+- [sailfishos][embedlite] Reenable layers.progressive-paint. Fixes JB#55278 OMP#JOLLA-309
+- [sailfishos][embedlite] Remove APZCCallbackHelper::ApplyCallbackTransform usage. Fixes JB#54375
+- [sailfishos][embedlite] Remove deprecated configuration options. Fixes JB#52892
+- [sailfishos][embedlite] Remove `#include "nsAutoPtr.h"` from embedlite. Fixes JB#54257
+- [sailfishos][embedlite] Remove `#include "nsIDOMDocument.h"` from embedlite. Fixes JB#54240
+- [sailfishos][embedlite] Remove include of signing.mk from installer makefile. Contributes to JB#54389
+- [sailfishos][embedlite] Remove inheritence from TabChildBase. Contributes to JB#53390
+- [sailfishos][embedlite] Remove JS request API usage in BrowserChildHelper. Contributes to JB#53390
+- [sailfishos][embedlite] Remove now unused gfxPrefs. Fixes JB#54368
+- [sailfishos][embedlite] Remove redundant uses of do_QueryInterface. Fixes JB#54364
+- [sailfishos][embedlite] Remove unused #include from qmessagepump.h. Fixes JB#54300
+- [sailfishos][embedlite] Remove unused ScrollableLayerGuid parameter. Fixes JB#54386
+- [sailfishos][embedlite] Remove usage of nsISSLStatus and nsISSLStatusProvider. Fixes JB#54301
+- [sailfishos][embedlite] Rename KeyboardEventBinding to KeyboardEvent_Binding. Fixes JB#54378
+- [sailfishos][embedlite] Rename NS_STRINGIFY to MOZ_STRINGIFY. Contributes to JB#54339
+- [sailfishos][embedlite] Rename TabChildHelper to BrowserChildHelper to match naming in gecko. Contributes to JB#53390
+- [sailfishos][embedlite] Replace CompositorBridgeParent::SetEGLSurfaceSize usage with CompositorBridgeParent::SetEGLSurfaceRect. Fixes JB#54298
+- [sailfishos][embedlite] Replace CompositorThreadHolder usage with CompositorThread. Fixes JB#54329
+- [sailfishos][embedlite] Replace FrameMetrics usage with RepaintRequest in EmbedContentController::RequestContentRepaint. Fixes JB#54304
+- [sailfishos][embedlite] Replace GetFocusedContent usage with GetFocusedElement. Fixes JB#54384
+- [sailfishos][embedlite] Replace InfallibleTArray usage with nsTArray. Fixes JB#53219
+- [sailfishos][embedlite] Replace Link::SetLinkState(eLinkState_Visited) with Link::VisitedQueryFinished. Fixes JB#54247
+- [sailfishos][embedlite] Replace MOZ_FALLTHROUGH usage with [[fallthrough]]. Fixes JB#54333
+- [sailfishos][embedlite] Replace mozilla::dom::ScreenOrientationInternal with hal::ScreenOrientation. Fixes JB#54253
+- [sailfishos][embedlite] Replace mozilla::Move usage with std::move. Fixes JB#54245
+- [sailfishos][embedlite] Replace nsIContentFrameMessageManager with ContentFrameMessageManager. Fixes JB#53069
+- [sailfishos][embedlite] Replace nsIDocShellTreeItem::GetRootTreeItem usage with GetInProcessRootTreeItem. Fixes JB#54361
+- [sailfishos][embedlite] Replace nsIDocument::GetDefaultView() usage with GetWindow(). Contributes to JB#54339
+- [sailfishos][embedlite] Replace nsIDocument usage with Document. Fixes JB#53218
+- [sailfishos][embedlite] Replace nsIDOMEventTarget with EventTarget. Contributes to JB#53054
+- [sailfishos][embedlite] Replace nsIDOMEvent usage with Event. Contributes to JB#54339
+- [sailfishos][embedlite] Replace nsIDOMMouseEvent::MOZ_SOURCE_TOUCH usage with MouseEvent_Binding::MOZ_SOURCE_TOUCH. Fixes JB#54379
+- [sailfishos][embedlite] Replace nsIMessageBroadcaster usage with ChromeMessageBroadcaster. Contributes to JB#54339
+- [sailfishos][embedlite] Replace nsIPresShell usage with PresShell. Fixes JB#54242
+- [sailfishos][embedlite] Replace nsITabChild usage with nsIBrowserChild. Contributes to JB#53390
+- [sailfishos][embedlite] Replace nsIWebBrowserChrome2 usage with nsIWebBrowserChrome. Fixes JB#53217
+- [sailfishos][embedlite] Replace nsIWebBrowser usage with nsWebBrowser. Fixes JB#54369
+- [sailfishos][embedlite] Replace nsPIDOMWindowOuter::GetTop usage with GetInProcessTop. Fixes JB#54362
+- [sailfishos][embedlite] Replace SameProcessDifferentThread with SameProcess in BrowserChildHelper. Contributes to JB#53390
+- [sailfishos][embedlite] Set '--disable-nodejs' configuration option. Contributes to JB#52980
+- [sailfishos][embedlite] Support custom http user agent string management. JB#53790 OMP#JOLLA-23
+- [sailfishos][embedlite] Switch to use nsIDocShell::isActive attribute instead of nsIWebBrowser::isActive. Fixes JB#54344
+- [sailfishos][embedlite] Synchronize GeckoChildProcessHost destruction with launching. Fixes JB#54387
+- [sailfishos][embedlite] Use layers::LayersId type for layer IDs in embedlite. Fixes JB#54244
+- [sailfishos][embedlite] Use LoadURIOptions object to pass options to LoadURI. Fixes JB#54383
+- [sailfishos][embedlite] Use move semantic in work with IPC::Channel. Fixes JB#54345
+- [sailfishos][embedlite] Use move semantic to assign mPrefs in EmbedLiteAppProcessParent::RecvPrefsArrayInitialized. Fixes JB#54367
+- [sailfishos][embedlite] Use MOZ_APP_VERSION instead of FIREFOX_VERSION. Contributes to JB#54339
+- [sailfishos][embedlite] Use nsTArray type for aFlavorList parameter of nsEmbedClipboard::HasDataMatchingFlavors. Fixes JB#54303
+- [sailfishos][embedlite] Use nsWebBrowser to focus active window. Fixes JB#55299 OMP#JOLLA-315
+- [sailfishos][fonts] Load and set FTLibrary for the Factory. Fixes JB#55191 OMP#JOLLA-285
+- [sailfishos][gecko] Adapt patch "Backport Embed MessageLoop contructor back". Fixes JB#53162
+- [sailfishos][gecko] Adapt patch "Bring back Qt layer". Contributes to JB#52981
+- [sailfishos][gecko] Adapt patch "Enable Pango for the build". Fixes JB#54157
+- [sailfishos][gecko] Adapt patch "Fix embedlite building". Fixes JB#53092
+- [sailfishos][gecko] Adapt patch "Fix GLContextProvider defines". Fixes JB#54112
+- [sailfishos][gecko] Adapt patch "Hackish fix for preferences usage in Parent process". Fixes JB#54373
+- [sailfishos][gecko] Adapt patch "Make it possible to extend CompositorBridgeParent". Fixes JB#54237
+- [sailfishos][gecko] Add including of nsRefPtrHashtable.h to GamepadEventChannelChild.h. Fixes JB#53165
+- [sailfishos][gecko] Add missing GetTotalScreenPixels for screen manager. Fixes JB#55145 OMP#JOLLA-277
+- [sailfishos][gecko] Add missing #include for nsIObserver and startupObserver. Fixes JB#54229
+- [sailfishos][gecko] Add symlink to embedlite. JB#52893
+- [sailfishos][gecko] Backport: "building with --disable-marionette fails with compile error" fix. JB#54148 OMP#JOLLA-117
+- [sailfishos][gecko] Bring back: 'Avoid incorrect compiler optimisation' patch. JB#55228 OMP#JOLLA-298
+- [sailfishos][gecko] Bring SDK back. Contributes to JB#54390
+- [sailfishos][gecko] Bump up to latest esr78 version. Fixes JB#54149 OMP#JOLLA-118
+- [sailfishos][gecko] Comment out Preferences::GetPreferences usage. Fixes JB#54346
+- [sailfishos][gecko] Disable Gecko Rust Feature cubeb-remoting. Fixes JB#54145 OMP#JOLLA-116
+- [sailfishos][gecko] Disable MOC code generation for message_pump_qt. Fixes JB#53154
+- [sailfishos][gecko] Disable unaligned FP access emulation on ARM for WebAssembly. Fixes JB#53095
+- [sailfishos][gecko] Drop patch "Respect - gfxPrefs::ClearCompoisitorContext for clearing". Fixes JB#54289
+- [sailfishos][gecko] Drop static casting from BrowserChild. JB#55336 OMP#55336
+- [sailfishos][gecko][embedlite] Bring SDK back in esr78 build. Fixes JB#54390
+- [sailfishos][gecko] Enable compile-environment as that guards use of system libs. JB#55174 OMP#JOLLA-283
+- [sailfishos][gecko] Fix for esr78 i486 configure, fixes JB#53896 OMP#JOLLA-59
+- [sailfishos][gecko] Fix GeckoChildProcessHost build errors. Fixes JB#53164
+- [sailfishos][gecko] Fix gfxPlatform::AsyncPanZoomEnabled for embedlite. Fixes JB#55227 OMP#JOLLA-297
+- [sailfishos][gecko] Force MOZ_BUILD_DATE env var in order to have more reproducible builds JB#55269 OMP#JOLLA-305
+- [sailfishos][gecko] Force to build mozglue and xpcomglue static libraries. Contributes to JB#54390
+- [sailfishos][gecko] Only set --without-thumb for arm32. JB#55347 OMP#JOLLA-334
+- [sailfishos][gecko] Only use rust SB vars for arm and aarch64. JB#45221 OMP#JOLLA-137
+- [sailfishos][gecko] Remove static registration of the 'mozilla/places/History.h' module. Contributes to JB#54255
+- [sailfishos][gecko] Remove x11 dependency declaration for gfx-backend-vulkan. Fixes JB#53065
+- [sailfishos][gecko] Use system library for libwebp JB#55183 OMP#JOLLA-284
+- [sailfishos][gecko] Use updated nasm. Contributes to JB#53993 OMP#JOLLA-77
+- [sailfishos][ipc] Whitelist sync messages of EmbedLite. Fixes JB#53059
+- [sailfishos][mozglue] Adapt patch "Introduce EmbedInitGlue to the mozglue". Fixes JB#54238
+- [sailfishos][packaging] Add explicit nss dependencies to the devel package. Fixes JB#55337 OMP#JOLLA-332
+- [sailfishos][packaging] Fix SDK build regression introduced with MOZ_BUILD_DATE commit JB#55269 OMP#JOLLA-305
+- [sailfishos][packaging] Remove duplicated SB2 env vars. JB#54221 OMP#JOLLA-137
+- [sailfishos][packaging] Update submodule url. JB#52893
+- [sailfishos][qt] Adapt "Bring back Qt layer" patch for esr78, part 1. Contributes to JB#54161
+- [sailfishos][qt] Adapt "Bring back Qt layer" patch for esr78, part 2. Contributes to JB#54161
+- [sailfishos][qt] Adapt "Bring back Qt layer" patch for esr78, part 3. Contributes to JB#54161
+- [sailfishos][qt] Adapt GfxInfo to nsIGfxInfo and GfxInfoBase. Contributes to JB#54161
+- [sailfishos][qt] Adapt gfxQtPlatform to base class gfxPlatform. Contributes to JB#54161
+- [sailfishos][qt] Adapt nsClipboard to nsTransferable. Contributes to JB#54161
+- [sailfishos][qt] Adapt nsLookAndFeel to LookAndFeel and nsXPLookAndFeel. Contributes to JB#54161
+- [sailfishos][qt] Adapt nsWindow to nsIWidget. Contributes to JB#54161
+- [sailfishos][qt] Adapt patch "Provide checkbox/radio renderer for Sailfish OS". Fixes JB#54230
+- [sailfishos][qt] Add missing #include for do_CreateInstance. Contributes to JB#54161
+- [sailfishos][qt] Add nsIWidget::CreateBidiKeyboardInner implementation to nsBidiKeyboard. Contributes to JB#54161
+- [sailfishos][qt] Add Qt headers to system headers. Fixes JB#53161
+- [sailfishos][qt] Allow Cairo as content/canvas backend for MOZ_WIDGET_QT
+- [sailfishos][qt] Convert nsWidgetQtModule to static registration. Contributes to JB#54161
+- [sailfishos][qt] Drop nsQtNetworkLinkService in favor of linux common nsNetworkLinkService. Contributes to JB#54161
+- [sailfishos][qt] Fix nsPrimitiveHelpers::CreateDataFromPrimitive call in nsClipboard. Contributes to JB#54161
+- [sailfishos][qt] Include LinuxProcessLauncher::DoSetup implementation for MOZ_WIDGET_QT. Contributes to JB#54161
+- [sailfishos][qt] Introduce MediaKeysEventSourceFactory. Contributes to JB#54161
+- [sailfishos][qt] Introduce ProcInfo. Contributes to JB#54161
+- [sailfishos][qt] Move `#include <qclipboard.h>` from nsClipboard.h to nsClipboard.cpp. Contributes to JB#54161
+- [sailfishos][qt] Move NullPrincipal under mozilla namespace. Contributes to JB#54161
+- [sailfishos][qt] Remove nsIWebBrowserPrint usage from nsPrintDialogQt. Contributes to JB#54161
+- [sailfishos][qt] Replace non-asserting NS_PRECONDITIONs with MOZ_ASSERTs. Contributes to JB#54161
+- [sailfishos][qt] Replace nsCOMPtr<nsIArray> with nsTArray<nsCString> in GetNativeClipboardData. Contributes to JB#54161
+- [sailfishos][qt] Replace nsCOMPtr<nsIArray> with nsTArray<nsCString> in SetNativeClipboardData. Contributes to JB#54161
+- [sailfishos][qt] Replace nsGeolocation usage with Geolocation and nsGeoPosition with GeolocationPosition. Contributes to JB#54161
+- [sailfishos][qt] Replace nsIDOMWheelEvent usage with WheelEvent_Binding. Contributes to JB#54161
+- [sailfishos][qt] Replace NullPrincipal::Create usage with NullPrincipal::CreateWithoutOriginAttributes. Contributes to JB#54161
+- [sailfishos][qt] Revert and adapt "Remove unneeded QT-related rules and configure bits". Contributes to JB#54161
+- [sailfishos][qt] Sort the #include statements in nsQAppInstance.cpp. Contributes to JB#54161
+- [sailfishos][qt] Switch aFlavorList parameter of the nsClipboard::HasDataMatchingFlavors to type nsTArray<nsCString>. Contributes to JB#54161
+- [sailfishos][qt] Use gfxPlatform::GetBackendPrefs to pass prefs in InitBackendPrefs. Contributes to JB#54161
+- [sailfishos][qt] Use Span in constructing a byte input stream in nsClipboard. Contributes to JB#54161
+- [sailfishos][rpm] Add clang-devel to build requirements. Contributes to JB#54160
+- [sailfishos][rpm] Add libatomic to build requirements. Contributes to JB#54160
+- [sailfishos][rpm] Add libicu to build requirements. Contributes to JB#54160
+- [sailfishos][rpm] Add python3-sqlite to build requirements. Contributes to JB#54160
+- [sailfishos][rpm] Bump up the required nspr version to 4.25.0. Contributes to JB#54160
+- [sailfishos][rpm] Bump up the required nss version to 3.53.1. Contributes to JB#54160
+- [sailfishos][rpm] Define CARGO_HOME under build dir. Fixes JB#54150 OMP#JOLLA-119
+- [sailfishos][rpm] Fix obj-build-dir path. Fixes JB#54152 OMP#JOLLA-121
+- [sailfishos][rpm] Move none adapted esr60 patches under old-patches. Fixes JB#54151 OMP#JOLLA-120
+- [sailfishos][rpm] Set minimum required libpng version to 1.6.35. Contributes to JB#54160
+- [sailfishos][rpm] Update esr78 build requirements. Fixes JB#54160
+- [sailfishos][rpm] Update packaging for 78.8.0. Contributes to JB#52977
+
+* Thu Jan 21 2021 lbt <david@dgreaves.com> - 60.9.1+git46
+- [sailfishos][build] Reduce cross build deadlocks. JB#51574
+
+* Fri Jan 15 2021 Raine Makelainen <raine.makelainen@gmail.com> - 60.9.1+git45
+- [sailfishos][embedlite] Introduce EMBED_SAFEMODE environment variable. JB#52738
+- [sailfishos][gecko] Ignore safemode in gfxPlatform. Fixes JB#52738
+
+* Thu Jan 14 2021 kende <marko.kenttala@jolla.com> - 60.9.1+git44
+- [sailfishos][embedlite] Disable dom.w3c_pointer_events. Fixes JB#51882
+
+* Wed Dec 30 2020 flypig <david@flypig.co.uk> - 60.9.1+git43
+- [sailfishos][gecko] Log bad tex upload calls and errors. Fixes JB#52618
+
+* Fri Dec 18 2020 Raine Makelainen <raine.makelainen@gmail.com> - 60.9.1+git42
+- [sailfishos][embedlite] Enable customelements. Fixes JB#51937
+
+* Thu Dec 17 2020 Raine Makelainen <raine.makelainen@gmail.com> - 60.9.1+git41
+- [sailfishos][gecko] Bug 1449268 - Treat document-level touch event listeners as passive. Fixes JB#52412
+- [sailfishos][gecko] Treat document-level touch event listeners as passive. Fixes JB#52412
+
+* Sat Dec 12 2020 Raine Makelainen <raine.makelainen@gmail.com> - 60.9.1+git40
+- [sailfishos][embedlite] Define "pulse" as cubeb backend. Fixes JB#52414
+
+* Fri Dec 11 2020 Raine Makelainen <raine.makelainen@gmail.com> - 60.9.1+git39
+- [sailfishos][gecko] Hide accessible carets also with touch  select all event. Fixes JB#51643
+
+* Thu Dec 10 2020 Raine Makelainen <raine.makelainen@gmail.com> - 60.9.1+git38
+- [sailfishos][embedlite] Schudule view update only when activating. JB#52415
+
+* Thu Dec 10 2020 flypig <david@flypig.co.uk> - 60.9.1+git37
+- [sailfishos][gecko] Enable event.srcElement on all channels. Fixes JB#52410
+
+* Tue Dec 08 2020 Andrew Branson <andrew.branson@jollamobile.com> - 60.9.1+git36
+- [sailfishos][media] Drop media buffer tweaks and reformat patches. JB#52385
+
+* Mon Dec 07 2020 Raine Makelainen <raine.makelainen@gmail.com> - 60.9.1+git35
+- [sailfishos][gecko] Replace RELEASE_OR_BETA setting with milestone override. JB#51300
+- [sailfishos][gecko] Start using user-agent builder. JB#52068
+- [sailfishos][rpm] Replace RELEASE_OR_BETA setting with milestone override. JB#51300
+
+* Mon Dec 07 2020 Raine Makelainen <raine.makelainen@gmail.com> - 60.9.1+git34
+- [sailfishos][embedlite] Disable color, date, time, month, week, datetime-local by default. Fixes JB#52383
+
+* Mon Dec 07 2020 flypig <david@flypig.co.uk> - 60.9.1+git33
+- [sailfishos][gecko] Provide checkbox/radio renderer for Sailfish OS. Fixes JB#52183
+
+* Wed Dec 02 2020 kende <marko.kenttala@jolla.com> - 60.9.1+git32
+- [sailfishos][gecko] Whitelist Google recaptcha servers. Fixes JB#51012
+
+* Tue Nov 24 2020 flypig <david@flypig.co.uk> - 60.9.1+git31
+- [sailfishos][gecko] Buffer when the video decoder lags behind. Fixes JB#51730
+- [sailfishos][gecko] Make <button> hit testing similar to other elements. Contributes to JB#51683
+
+* Thu Nov 19 2020 Raine Makelainen <raine.makelainen@gmail.com> - 60.9.1+git30
+- [sailfishos][embedlite] Fix nsILoginManagerPrompter initialization. Fixes JB#52069
+
+* Tue Nov 17 2020 Andrew Branson <andrew.branson@jollamobile.com> - 60.9.1+git29
+- [sailfishos][gecko] Revert 'Apply UA override for window.navigator.'. Fixes JB#51958
+
+* Mon Nov 16 2020 Raine Makelainen <raine.makelainen@gmail.com> - 60.9.1+git28
+- [sailfishos][embedlite] Disable unsupported --disable-elf-hack on aarch64. JB#52012
+- [sailfishos][embedlite] Guard PuppetWidgetBase use after destruction. JB#50272
+- [sailfishos][gecko] Backport patches from esr68 to enable profiler for aarch64. JB#52012
+
+* Sat Nov 14 2020 Raine Makelainen <raine.makelainen@gmail.com> - 60.9.1+git27
+- [sailfishos][embedlite] Do not force online when loading url. JB#45654
+- [sailfishos][gecko] Hardcode loopback address for profile lock filename. JB#45654
+
+* Fri Nov 13 2020 Andrew Branson <andrew.branson@jollamobile.com> - 60.9.1+git26
+- [sailfishos][embedlite] Enable decoder recycling. JB#51730
+- [sailfishos][gecko] Force recycling of gmp-droid instances. JB#51730
+
+* Mon Nov 09 2020 Andrew Branson <andrew.branson@jollamobile.com> - 60.9.1+git25
+- [sailfishos][embedlite] Avoid dropping freeze/thaw requests. Contributes to JB#51747
+- [sailfishos][media] Ensure audio continues when screen is locked. Fixes JB#51747
+- [sailfishos][ogg] Restore thumb disabling fix. Fixes JB#51837
+
+* Tue Nov 03 2020 Raine Makelainen <raine.makelainen@gmail.com> - 60.9.1+git24
+- [sailfishos][gecko] Apply UA override for window.navigator. Fixes JB#51824
+
+* Mon Nov 02 2020 Andrew Branson <andrew.branson@jollamobile.com> - 60.9.1+git23
+- [sailfishos][gmp-droid] Remove specific gmp-droid support. JB#51206
+- [sailfishos][gmp-droid] Remove specific gmp-droid support. JB#51206. Fixes JB#51665
+
+* Mon Nov 02 2020 Raine Makelainen <raine.makelainen@gmail.com> - 60.9.1+git22
+- [sailfishos][embedlite] Align image handling prefs. JB#51273
+- [sailfishos][embedlite] Align network.http && browser.cache prefs with Android FF. JB#45654
+- [sailfishos][embedlite] Cleanup obsoleted preferences. JB#51273
+
+* Fri Oct 30 2020 kende <marko.kenttala@jolla.com> - 60.9.1+git21
+- [sailfishos][configure] Disable marionette. Contributes to JB#51685
+
+* Wed Oct 28 2020 flypig <david@flypig.co.uk> - 60.9.1+git20
+- [sailfishos][embedlite] Map Suspend/Resume to Freeze/Thaw respectively. Contributes to JB#51747
+
+* Mon Oct 26 2020 kende <marko.kenttala@jolla.com> - 60.9.1+git19
+- [sailfishos][embedlite] Platform info fix for out of memory errors. Fixes JB#51363
+
+* Thu Oct 22 2020 Andrew Branson <andrew.branson@jollamobile.com> - 60.9.1+git18
+- [manifest] Align with android manifest. Fixes JB#51640
+- [sailfishos][manifest] Align with android manifest. Fixes JB#51640
+- [sailfishos][manifest] Switch RESPATH use for BINPATH as in the android manifest. JB#51640
+
+* Thu Oct 22 2020 Raine Makelainen <raine.makelainen@gmail.com> - 60.9.1+git17
+- [sailfishos][gecko] Prioritize loading of extension versions of the GetGraphicsResetStatus function. Fixes JB#51664
+
+* Tue Oct 20 2020 flypig <david@flypig.co.uk> - 60.9.1+git16
+- [sailfishos][gecko] Adjust audio control dimensions. Contributes to JB#51471
+- [sailfishos][gecko] Include XUL videocontrols reflow code on Sailfish OS. Contributes to JB#51471
+
+* Mon Oct 19 2020 Niels Breet <niels.breet@jolla.com> - 60.9.1+git15
+- [sailfishos][build] Reduce memory usage during linking. Fixes JB#51641
+
+* Mon Oct 19 2020 Raine Makelainen <raine.makelainen@gmail.com> - 60.9.1+git14
+- [sailfishos][configuration] Configure application as mobile/sailfishos. JB#51366
+- [sailfishos][gecko] Suppress LoginManagerContent.jsm ownerDocument errors. Fixes JB#51426
+
+* Thu Oct 15 2020 Andrew Branson <andrew.branson@jollamobile.com> - 60.9.1+git13
+- [sailfishos][audio] Disable cubeb remoting. Fixes JB#51304
+- [sailfishos][build] Cleanup missing/unwanted files from manifest. JB#50963
+- [sailfishos][build] Fix debug package generation. Fixes JB#51591
+- [sailfishos][embedlite] Enter key fix for multiline editing. Fixes JB#50611
+- [sailfishos] Include ffvpx libs. JB#51304
+
+* Wed Oct 14 2020 flypig <david@flypig.co.uk> - 60.9.1+git12
+- [sailfishos][qt] Unapply Qt changes from font code. Contributes to JB#51368
+
+* Tue Oct 13 2020 Andrew Branson <andrew.branson@jolla.com> - 60.9.1+git11
+- [loader] Set xuldir to GRE_HOME again. JB#51304
+- [sailfishos][loader] Set xuldir to GRE_HOME again. JB#51304
+
+* Mon Oct 12 2020 kende <marko.kenttala@jolla.com> - 60.9.1+git10
+- [sailfishos][embedlite] Key event sending. Contributes to JB#50611
+- [sailfishos][gecko] Use registered IHistory service implementation in dom::Link. Fixes JB#51504
+
+* Mon Oct 12 2020 flypig <david@flypig.co.uk> - 60.9.1+git9
+- [sailfishos][embedlite] Ensure WebBrowserChrome correctly returns nsIDocShellTreeItem. Fixes JB#51414
+
+* Tue Oct 06 2020 Raine Makelainen <raine.makelainen@gmail.com> - 60.9.1+git8
+- [sailfishos][qt] Add nsIPrintSettingsService for Qt toolkit. Fixes JB#51349
+
+* Mon Oct 05 2020 flypig <david@flypig.co.uk> - 60.9.1+git7
+- [sailfishos][embedlite] Add script for partial building. Fixes JB#51037
+- [sailfishos][gecko] Disable TLS 1.0 and 1.1. Fixes JB#50522
+
+* Tue Sep 29 2020 Raine Makelainen <raine.makelainen@gmail.com> - 60.9.1+git6
+- [sailfishos][qt] Initialize FreeType library properly. JB#51369
+
+* Fri Sep 25 2020 Raine Makelainen <raine.makelainen@gmail.com> - 60.9.1+git5
+- [sailfishos][embedlite] Add reputationservice.xpt to the omni.ja. JB#51216
+
+* Tue Sep 22 2020 Raine Makelainen <raine.makelainen@gmail.com> - 60.9.1+git4
+- [sailfishos][gecko] For time being enable MOZ_LOG. JB#51300
+
+* Mon Sep 21 2020 Raine Makelainen <raine.makelainen@gmail.com> - 60.9.1+git3
+- [sailfishos][embedlite] Cleanup some obsolete image.mem. prefs. JB#51273
+
+* Fri Sep 18 2020 Raine Makelainen <raine.makelainen@gmail.com> - 60.9.1+git2
+- [sailfishos][contentaction] Fix content action integration to work. Fixes JB#51235
+- [sailfishos][rpm] Fix spec and patch apply. JB#50805
+
+* Thu Sep 17 2020 Raine Makelainen <raine.makelainen@jolla.com> - 60.9.1+git1
+- [sailfishos][embedlite] Adapt embedlite API. JB#50505
+- [sailfishos][embedlite] Add helper for deserialising nsISSLStatus objects. Contributes to JB#50947
+- [sailfishos][embedlite] Add profiler_{init,shutdown} to the EmbedLiteApp. Fixes JB#50956
+- [sailfishos][embedlite] Bring C++ components from embedlite-components. JB#50919
+- [sailfishos][embedlite] Build test with qtmozembed headers. Fixes JB#50865
+- [sailfishos][embedlite] Change PR_LOGGING to MOZ_LOGGING
+- [sailfishos][embedlite] Check for null GetApzcTreeManager(). Contributes to JB#49875
+- [sailfishos][embedlite] Configure embedlite for esr60. JB#50505
+- [sailfishos][embedlite] Define MOZ_APP_BASENAME to generate application.ini.h. JB#50788
+- [sailfishos][embedlite] Disable keyevent sending for now. JB#50505
+- [sailfishos][embedlite] Disable stylo. JB#50505
+- [sailfishos][embedlite] Drop EmbedLiteContentController. JB#50919
+- [sailfishos][embedlite] Drop nsLoginManagerPrompter from manifest. JB#50052
+- [sailfishos][embedlite] Each idl needs to implement nsISupport. JB#50505
+- [sailfishos][embedlite] Enable Places for embedlite. JB#50505
+- [sailfishos][embedlite] Enable printing support. JB#50505
+- [sailfishos][embedlite] Export XRE_GetEmbedLite from libxul. JB#50788
+- [sailfishos][embedlite] Fix embedLiteCoreInitTest and embedLiteViewInitTest building. Fixes JB#50788
+- [sailfishos][embedlite] Fix std::string conversions to UTF16 format. JB#50919
+- [sailfishos][embedlite] Get IAPZCTreeManager handle via CompositorSession. JB#50977
+- [sailfishos][embedlite] Hackish fix for preferences usage in Parent process (part 2)
+- [sailfishos][embedlite] Initialize user prefs after embedding. Fixes JB#50957
+- [sailfishos][embedlite] PC file correct rpath. Fixes JB#50949
+- [sailfishos][embedlite] PC file fix. Contributes to JB#50949
+- [sailfishos][embedlite] PC file missing rpath definition. Fixes JB#50949
+- [sailfishos][embedlite] Prepare to introduce EmbedInitGlue in the mozglue. JB#50788
+- [sailfishos][embedlite] Remove broken printf line.
+- [sailfishos][embedlite] Remove GRE_HOME from GeckoLoader. JB#50505
+- [sailfishos][embedlite] Update IPC message return values and idls. JB#50505
+- [sailfishos][embedlite] Whitelist sync messages of EmbedLite. JB#50505
+- [sailfishos][gecko] Skip invalid WatchId in geolocation.clearWatch(). Contributes to JB#50110
+- [sailfishos][locale] Get 12/24h timeformat setting from dconf. Fixes JB#50805
+- [sailfishos][mozglue] Introduce EmbedInitGlue to the mozglue. JB#50788
+- [sailfishos][qt] Enable print-to-PDF support. Contributes to JB#50680
+- [sailfishos][qt] Fix platform font list configuration. JB#50967
+- [sailfishos][rpm] Fix spec and patch apply. JB#50805
+- [sailfishos][rpm] Update packaging for 60.9.1. JB#50806
+- [sailfishos][rpm] Use system libvpx. Fixes JB#50922
+
+* Wed May 06 2020 flypig <david@flypig.co.uk> - 45.9.1+git22
+- [nemo][xulrunner-qt5] Remove patch added promptForSaveToFile() support. JB#49723
+
+* Wed May 06 2020 Andrew den Exter <andrew.den.exter@jollamobile.com> - 45.9.1+git21
+- [xulrunner-qt5] Fix a crash during garbage collection. Contributes to JB#48786
+
+* Wed Apr 08 2020 Andrew Branson <andrew.branson@jollamobile.com> - 45.9.1+git20
+- [nemo][media] Fix mp3 audio playback and add debug graph generation. Fixes JB#49532
+
+* Thu Mar 26 2020 Andrew den Exter <andrew.den.exter@jollamobile.com> - 45.9.1+git19
+- [nemo][embedlite] Better logging when preparing offscreen rendering. JB#48440
+- [xulrunner-qt5] Reduce memory pressure during application startup. Contributes to JB#48786
+
+* Wed Mar 11 2020 Raine Makelainen <raine.makelainen@gmail.com> - 45.9.1+git18
+- [nemo][gecko] Handle temporary directory similarly as in MacOSX. JB#49155
+
+* Fri Feb 28 2020 Andrew den Exter <andrew.den.exter@jollamobile.com> - 45.9.1+git17
+- [xulrunner] Fix embeded offscreen surfaces not being painted. Contributes to JB#48494
+
+* Tue Feb 04 2020 Raine Makelainen <raine.makelainen@gmail.com> - 45.9.1+git16
+- [nemo][xulrunner] Use libcontentaction for uri scheme handling. JB#47892
+
+* Sat Feb 01 2020 Matti Kosola <matti.kosola@jollamobile.com> - 45.9.1+git15
+- [xulrunner] Fix build error with newer glibc. JB#48719
+
+* Tue Dec 10 2019 Raine Makelainen <raine.makelainen@gmail.com> - 45.9.1+git14
+- [nemo][embedlite] Explicitly enable libproxy for Gecko build. JB#46345
+
+* Wed Nov 20 2019 Raine Makelainen <raine.makelainen@gmail.com> - 45.9.1+git13
+- [nemo][xulrunner] Fix build with GCC 8. JB#47985
+
+* Thu Aug 22 2019 Raine Makelainen <raine.makelainen@gmail.com> - 45.9.1+git12
+- [nemo][embedlite] Disable MSAA on mobile. Fixes JB#44402
+
+* Wed May 22 2019 MikeSalmela <mike.salmela@jollamobile.com> - 45.9.1+git11
+- [gecko-dev] Fix licence, update URL. Contributes to JB#45486
+- [nemo][gecko-dev] Fix licence, update URL. Contributes to JB#45486
+
+* Tue Apr 30 2019 pvuorela <pekka.vuorela@jolla.com> - 45.9.1+git10
+- [gecko-dev] Fix linking with newer ld. Contributes to JB#45154
+- [xulrunner] Fix linking with newer ld. Contributes to JB#45154
+
+* Mon Apr 29 2019 Raine Makelainen <raine.makelainen@gmail.com> - 45.9.1+git9
+- [nemo][embedlite] Cherry-pick sysmacros fix after glibc update. Contributes to JB#45154
+
+* Tue Apr 16 2019 Raine Makelainen <raine.makelainen@gmail.com> - 45.9.1+git8
+- [nemo][embedlite] Fix sync message handler call both global and frame message handlers. Fixes JB#45429
+
+* Tue Apr 09 2019 Raine Makelainen <raine.makelainen@gmail.com> - 45.9.1+git7
+- [nemo][embedlite] Switch to use APZEventState (async pan&zoom) for input handling. Fixes JB#44361
+
+* Tue Apr 02 2019 Raine Makelainen <raine.makelainen@gmail.com> - 45.9.1+git6
+- [nemo][embedlite] Schedule update for a view. Contributes to JB#44721
+
+* Wed Mar 27 2019 Raine Makelainen <raine.makelainen@gmail.com> - 45.9.1+git5
+- [nemo][embedlite] Cleanup build configuration. Fixes JB#44612
+
+* Tue Mar 19 2019 pvuorela <pekka.vuorela@jolla.com> - 45.9.1+git4
+- [xulrunner] Enable system ICU. Contributes to JB#36010
+
+* Wed Feb 27 2019 Raine Makelainen <raine.makelainen@gmail.com> - 45.9.1+git3
+- [nemo][xulrunner] Update to gecko esr45.9. Contributes to JB#44806
+
+* Tue Feb 26 2019 Raine Makelainen <raine.makelainen@jolla.com> - 45.9.1+git2
+- [nemo][embedlite] Align EmbedLiteViewBaseChild's RecvSetIsActive to nsPresShell::SetIsActive. Fixes JB#44342
+- [nemo][xulrunner] Do not load nsHelperAppDlg.js. Fixes JB#44322
+- [nemo][xulrunner] Embedlite doesn't have prompter implementation. Fixes JB#44322
+- [nemo][xulrunner] Merge latest esr45 (45.9.1)
+
+* Thu Jan 31 2019 Tomi Leppänen <tomi.leppanen@jolla.com> - 38.8.0.25
+- [gecko] nemo : Backport upstream fix for bug 1321066. Fixes JB#37118
+- [nemo][xulrunner] Build xulrunner with ARM instruction set instead of THUMB. Fixes JB#33431
+- [packaging] Remove explicit dependency to sqlite. Contributes to JB#44455
+
+* Wed Jan 30 2019 Raine Makelainen <raine.makelainen@jolla.com> - 45.9.1+git1
+- [nemo][xulrunner] Merge latest esr45 (45.9.1)
+
+* Wed Jan 30 2019 Raine Makelainen <raine.makelainen@jolla.com> - 45.8.1.1+git7
+- [nemo][xulrunner] Embedlite doesn't have prompter implementation. Fixes JB#44322
+
+* Wed Jan 30 2019 Raine Makelainen <raine.makelainen@jolla.com> - 45.8.1.1+git6
+- [nemo][xulrunner] Do not load nsHelperAppDlg.js. Fixes JB#44322
+
+* Mon Jan 21 2019 Raine Makelainen <raine.makelainen@jolla.com> - 45.8.1.1+git5
+- [nemo][embedlite] Align EmbedLiteViewBaseChild's RecvSetIsActive to nsPresShell::SetIsActive. Fixes JB#44342
+
+* Mon Jan 21 2019 Andrew den Exter <andrew.den.exter@qinetic.com.au> - 45.8.1.1+git4
+- [xulrunner] Update media resource state when the playing state changes for any reason. Fixes JB#42900
+
+* Fri Jan 18 2019 Andrew den Exter <andrew.den.exter@jollamobile.com> - 38.8.0.24
+- [gecko] nemo : Backport upstream fix for bug 1321066. Fixes JB#37118
+- [nemo][xulrunner] Build xulrunner with ARM instruction set instead of THUMB. Fixes JB#33431
+- [nemo][xulrunner] Update media resource state when the playing state changes for any reason. Fixes JB#42900
+
+* Thu Jan 17 2019 Raine Makelainen <raine.makelainen@jolla.com> - 45.8.1.1+git3
+- [rpm] Update system nspr version and configuration flag. Contributes to JB#37917
+
+* Thu Jan 17 2019 Raine Makelainen <raine.makelainen@gmail.com> - 38.8.0.22
+- [gecko] nemo : Backport upstream fix for bug 1321066. Fixes JB#37118
+- [nemo][xulrunner] Build xulrunner with ARM instruction set instead of THUMB. Fixes JB#33431
+- [nemo][xulrunner] Fix tls loading error with newer NSS. Contributes to JB#36180
+
+* Thu Jan 10 2019 Raine Makelainen <raine.makelainen@jolla.com> - 45.8.1.1+git2
+- [xulrunner] Make fullscreen enabling work as used to with pref full-screen-api.content-only. Fixes JB#44129
+
+* Tue Dec 18 2018 Raine Makelainen <raine.makelainen@jolla.com> - 45.8.1.1+git1
+- [rpm] Cleanup spec. Contributes to JB#44176
+
+* Mon Dec 17 2018 Raine Makelainen <raine.makelainen@gmail.com> - 45.8.1.1
+- [embedlite] Fix (de)serialization of JSON messages. Fixes JB#37190
+
+* Tue Sep 26 2017 Raine Makelainen <raine.makelainen@gmail.com> - 38.8.0.21
+- [nemo][xulrunner] Build xulrunner with ARM instruction set instead of THUMB. Fixes JB#33431
+- [xulrunner] Build xulrunner with ARM instruction set instead of THUMB. JB#33431
+
+* Wed Sep 13 2017 Raine Makelainen <raine.makelainen@gmail.com> - 38.8.0.20
+- [nemo][xulrunner] Add webrtc 64 bit support to build config. Contributes to JB#39691
+- [xulrunner] Add webrtc 64 bit support to build config. Contributes to JB#39691
+
+* Tue Sep 05 2017 Raine Makelainen <raine.makelainen@gmail.com> - 38.8.0.19
+- [nemo][embedlite] Drop touch start tolerance default value. Contributes to JB#39581
+- [nemo][embedlite] Use default value for \"apz.asyncscroll.throttle\". Contributes to JB#39581
+
+* Wed Aug 30 2017 Raine Makelainen <raine.makelainen@jolla.com> - 38.8.0.18
+- [rpm] Bump up version. Contributes to JB#39557
+
+* Thu Dec 22 2016 Raine Makelainen <raine.makelainen@gmail.com> - 38.8.0.17
+- [embedlite] Update width and height based on margins. Contributes to JB#36749
+
+* Fri Dec 02 2016 Raine Makelainen <raine.makelainen@gmail.com> - 38.8.0.16
+- [gecko] Backport upstream fix for bug 1321066. Fixes JB#37118
+- [gecko] nemo : Backport upstream fix for bug 1321066. Fixes JB#37118
+- [rpm] Avoid crash in gst_video_frame_map_id. Fixes JB#37116
+
+* Tue Oct 25 2016 Raine Makelainen <raine.makelainen@jolla.com> - 38.8.0.15
+- [embedlite] Add ScrollBy and ScrollTo methods. Contributes to JB#36705
+- [rpm] Increment version
+
+* Tue Oct 18 2016 Raine Makelainen <raine.makelainen@gmail.com> - 38.8.0.14
+- [embedlite] Fix browser crash upon exit. Fixes JB#36633
+
+* Thu Oct 13 2016 Raine Makelainen <raine.makelainen@gmail.com> - 38.8.0.13
+- [embedlite] Set egl surface size. Contributes to JB#36509
+
+* Tue Sep 27 2016 Raine Makelainen <raine.makelainen@gmail.com> - 38.8.0.12
+- [rpm] Remove sqlite3 jemalloc patch
+
+* Mon Sep 12 2016 Raine Makelainen <raine.makelainen@gmail.com> - 38.8.0.11
+- [embedlite] Guard swaping while reading platform image. Contributes to JB#36158
+
+* Fri Aug 19 2016 pvuorela <pekka.vuorela@jolla.com> - 38.8.0.10
+- [xulrunner] Use system Cairo and Pixman. Contributes to JB#36010
+
+* Mon Jul 11 2016 chriadam <chris.adams@jollamobile.com> - 38.8.0.8
+- [1]
+- [xulrunner] Don't try to access undefined app list of AppsServiceChild. Fixes MER#1609
+
+* Mon Jun 20 2016 Raine Makelainen <raine.makelainen@gmail.com> - 38.8.0.6
+- [embedlite] Only widget hosting window can create compositor. Fixes JB#35134
+
+* Thu Jun 09 2016 Raine Makelainen <raine.makelainen@jolla.com> - 38.8.0.4
+- [rpm] Increment package version
+
+* Thu Jun 09 2016 Raine Makelainen <raine.makelainen@gmail.com> - 38.8.0.3
+- [embedlite] Enable new cache backend. Fixes JB#35436
+
+* Fri May 27 2016 Raine Makelainen <raine.makelainen@jolla.com> - 38.8.0.2
+- [embedlite] Use system nspr and nss
+
+* Tue May 03 2016 Raine Makelainen <raine.makelainen@jolla.com> - 38.8.0.0
+- [rpm] Update to latest esr38 version (38.8.0.0)
+
+* Mon Dec 14 2015 jpetrell <joona.petrell@jollamobile.com> - 38.0.5.10
+- [license] Unify open source licenses. Contributes to JB#33648
+
+* Thu Nov 12 2015 rozhkov <dmitry.rojkov@gmail.com> - 38.0.5.9
+- [rpm] Add patch with pinching to panning transition. Fixes JB#33061
+
+* Mon Nov 09 2015 rozhkov <dmitry.rojkov@gmail.com> - 38.0.5.8
+- [rpm] Add patch reverting bug 1114594. Contributes to JB#32870
+
+* Thu Nov 05 2015 Raine Makelainen <raine.makelainen@jollamobile.com> - 38.0.5.7
+- [embedlite] Guard PreRender with visibility and active state. Fixes JB#32879
+
+* Fri Oct 30 2015 Dmitry Rozhkov <dmitry.rozhkov@jolla.com> - 38.0.5.5
+- [embedlite] Fix LoginManager isues. Fixes JB#21980
+
+* Mon Oct 26 2015 Raine Makelainen <raine.makelainen@jollamobile.com> - 38.0.5.3
+- [rpm] Use system sqlite
