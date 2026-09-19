@@ -1,0 +1,211 @@
+/* -*- Mode: C++; tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+"use strict";
+
+Logger.debug("JSScript: SelectAsyncHelper.js loaded");
+
+var globalObject = null;
+
+function debug(msg) {
+  Logger.debug("SelectAsyncHelper.js -", msg);
+}
+
+function isMenu(aElement) {
+  return (HTMLSelectElement.isInstance(aElement) ||
+          aElement instanceof Ci.nsIDOMXULMenuListElement);
+}
+
+/*
+ * Returns list of options of a menu element 'aElement'.
+ * 'aProps' is a dictionary of predefined properties of every option.
+ * 'aIndexFunction' is a function applied to every leaf option element and
+ * it must return element's index.
+ */
+function getOptionList(aElement, aProps, aIndexFunction) {
+  let parent = aElement;
+  if (aElement instanceof Ci.nsIDOMXULMenuListElement) {
+    parent = aElement.menupopup;
+  }
+  let children = parent.children;
+  let list = [];
+
+  for (let i = 0; i < children.length; i++) {
+    let child = children[i];
+    let item = {
+      "label": child.text || child.label,
+      "disabled": aProps.disabled || child.disabled,
+      "selected": child.selected,
+      "group": aProps.group || ""
+    };
+
+    if (HTMLOptionElement.isInstance(child) ||
+        child instanceof Ci.nsIDOMXULSelectControlItemElement) {
+      if (aIndexFunction) {
+        item["index"] = aIndexFunction(child);
+      }
+      list.push(item);
+    } else if (HTMLOptGroupElement.isInstance(child)) {
+      let props = {
+        "group": item["label"],
+        "disabled": item["disabled"]
+      };
+      getOptionList(child, props, aIndexFunction).forEach(function (subnode) {
+          list.push(subnode);
+      });
+    }
+  }
+  return list;
+}
+
+function Dialog(aMultiple, aOptionList) {
+  this._init({
+      "multiple": aMultiple,
+      "options": aOptionList
+  });
+}
+
+// Proxy object for sub window with OPTION elements
+Dialog.prototype = {
+  QueryInterface: ChromeUtils.generateQI([Ci.nsIObserver,
+                                          Ci.nsISupportsWeakReference]),
+
+  _init: function(aData) {
+    this.id = Services.uuid.generateUUID().toString();
+    aData.id = this.id;
+    addMessageListener("embedui:selectresponse", this);
+    sendAsyncMessage("embed:selectasync", aData);
+  },
+
+  receiveMessage: function(aMessage) {
+    if (aMessage.json.id !== this.id) return;
+    removeMessageListener("embedui:selectresponse", this);
+    this.onDone(aMessage.json.result);
+  },
+
+  onDone: function(aResult) {},
+
+  abort: function() {
+    removeMessageListener("embedui:selectresponse", this);
+    sendAsyncMessage("embed:selectabort", { id: this.id });
+  }
+};
+
+function SelectHelper() {
+  this._init();
+}
+
+SelectHelper.prototype = {
+  QueryInterface: ChromeUtils.generateQI([Ci.nsIObserver,
+                                          Ci.nsISupportsWeakReference]),
+
+  _selectElement: null,
+  _dialog: null, // a proxy for modal subwindow
+  _nodeMap: {},
+
+  _init: function() {
+    // Hosted ESR140 input delivers touch events for native selects without
+    // synthesizing the click that older EmbedLite versions handled below.
+    addEventListener("touchend", this, true);
+    addEventListener("click", this, true);
+  },
+
+  handleEvent: function(aEvent) {
+    switch (aEvent.type) {
+      case "touchend":
+        if (HTMLSelectElement.isInstance(aEvent.target)) {
+          aEvent.preventDefault();
+          this.onClicked(aEvent);
+        }
+        break;
+      case "click":
+        this.onClicked(aEvent);
+        break;
+    }
+  },
+
+  reset: function() {
+    this._selectElement = null;
+    this._dialog = null;
+    this._nodeMap = {};
+  },
+
+  onClicked: function(aEvent) {
+    let target = aEvent.target;
+    // don't use 'this' inside lambdas for the sake of clarity
+    let that = this;
+
+    if (this._selectElement === null && isMenu(target)) {
+      debug("menu element clicked");
+      this._selectElement = target;
+      let index = 0;
+      let optionList = getOptionList(target, {}, function (aNode) {
+          that._nodeMap[index] = aNode;
+          return index++;
+      });
+
+      if (index === 0) {
+        // don't open dialog for empty option lists
+        this.reset();
+        return;
+      }
+
+      this._dialog = new Dialog(target.multiple, optionList);
+
+      this._dialog.onDone = function (result) {
+
+        if (result == -1) {
+          debug("Empty result");
+          that.reset()
+          return;
+        }
+
+        that.onResultsReceived(target, result);
+        that.reset()
+      }
+    } else if (this._selectElement && this._selectElement !== target) {
+      // in case user clicked outside of subwindow
+      debug("User manage to click outside of subwindow");
+      if (this._dialog) {
+        this._dialog.abort();
+      }
+      this.reset();
+    }
+  },
+
+  onResultsReceived: function (aElement, aOptions) {
+    if (aElement instanceof Ci.nsIDOMXULMenuListElement) {
+      for (let i = 0; i < aOptions.length; i++) {
+        if (aOptions[i].selected) {
+          aElement.selectedIndex = aOptions[i].index;
+          break;
+        }
+      }
+    } else if (HTMLSelectElement.isInstance(aElement)) {
+      if (!Array.isArray(aOptions)) {
+        return;
+      }
+      let that = this;
+      aOptions.forEach(function (option) {
+          let node = that._nodeMap[option.index];
+          if (node) {
+            node.selected = option.selected;
+          }
+      });
+      this.fireOnChange(aElement);
+    }
+  },
+
+  fireOnChange: function(aElement) {
+    let evt = aElement.ownerDocument.createEvent("Events");
+    evt.initEvent("change", true, true, aElement.defaultView, 0,
+                  false, false,
+                  false, false, null);
+    content.window.setTimeout(function() {
+        aElement.dispatchEvent(evt);
+    }, 0);
+  }
+};
+
+globalObject = new SelectHelper();
