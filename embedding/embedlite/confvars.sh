@@ -4,7 +4,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 MOZ_APP_BASENAME=GeckoEmbedLite
-MOZ_APP_NAME=gecko-embedlite
+MOZ_APP_NAME=mozembedlite
 MOZ_APP_DISPLAYNAME="Gecko EmbedLite"
 MOZ_UPDATER=0
 MOZ_CHROME_FILE_FORMAT=omni

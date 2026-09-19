@@ -14,8 +14,8 @@
 %define system_libwebp      1
 
 
-%global mozappdir     %{_libdir}/gecko-embedlite
-%global mozappdirdev  %{_libdir}/gecko-embedlite-devel
+%global mozappdir     %{_libdir}/mozembedlite
+%global mozappdirdev  %{_libdir}/mozembedlite-devel
 
 # Private/bundled libs the final package should not provide or depend on.
 %global privlibs             libfreebl3
@@ -57,6 +57,7 @@ URL:        https://github.com/sailfishos/gecko-dev
 Source0:    %{name}-%{version}.tar.bz2
 Provides:   xulrunner-qt5 = %{version}-%{release}
 Obsoletes:  xulrunner-qt5 < 154
+Obsoletes:  embedlite-components-qt5 < 3
 Patch1:     0001-Add-symlink-to-embedlite.-JB-52893.patch
 Patch2:     0002-Bring-back-Qt-layer.-JB-50505.patch
 Patch3:     0003-Fix-embedlite-building.-JB-50505.patch
@@ -553,6 +554,14 @@ export SB2_RUST_TARGET_TRIPLE=aarch64-unknown-linux-gnu
 
 %{__make} -C %BUILD_DIR/mobile/sailfishos/installer install DESTDIR=%{buildroot}
 
+install -d %{buildroot}%{mozappdir}/components
+install -m 0644 \
+    mobile/sailfishos/components/modules/* \
+    %{buildroot}%{mozappdir}/components/
+install -d %{buildroot}%{mozappdir}/chrome
+cp -a mobile/sailfishos/chrome/. %{buildroot}%{mozappdir}/chrome/
+chmod -R go-w %{buildroot}%{mozappdir}/components %{buildroot}%{mozappdir}/chrome
+
 gecko_abi=$(echo "%{version}" | cut -d. -f1,2)
 mv ${RPM_BUILD_ROOT}%{mozappdir}/libxul.so \
     ${RPM_BUILD_ROOT}%{mozappdir}/libxul.so.${gecko_abi}
@@ -585,8 +594,11 @@ find "%{buildroot}%{_includedir}" -type f -name '*.h' -exec chmod 0644 {} +;
 touch /var/lib/_MOZEMBED_CACHE_CLEAN_
 
 %files
+%license mobile/sailfishos/COPYING
 %dir %{mozappdir}
 %dir %{mozappdir}/defaults
+%{mozappdir}/components
+%{mozappdir}/chrome
 %{mozappdir}/*.so
 %{mozappdir}/*.so.*
 %{mozappdir}/omni.ja
@@ -604,6 +616,8 @@ touch /var/lib/_MOZEMBED_CACHE_CLEAN_
 %{_bindir}/*
 %{mozappdir}/*
 %exclude %dir %{mozappdir}/defaults
+%exclude %{mozappdir}/components
+%exclude %{mozappdir}/chrome
 %exclude %{mozappdir}/*.so
 %exclude %{mozappdir}/*.so.*
 %exclude %{mozappdir}/omni.ja

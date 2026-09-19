@@ -44,9 +44,9 @@ DirProvider::GetFile(const char* aKey, bool* aPersist,
     nsCOMPtr<nsIFile> file;
     nsresult rv;
 #if defined(HAVE_USR_LIB64_DIR) && defined(__LP64__)
-    rv = NS_NewNativeLocalFile(nsDependentCString("/usr/lib64/gecko-embedlite/chrome/embedlite/content"), getter_AddRefs(file));
+    rv = NS_NewNativeLocalFile(nsDependentCString("/usr/lib64/mozembedlite/chrome/embedlite/content"), getter_AddRefs(file));
 #else
-    rv = NS_NewNativeLocalFile(nsDependentCString("/usr/lib/gecko-embedlite/chrome/embedlite/content"), getter_AddRefs(file));
+    rv = NS_NewNativeLocalFile(nsDependentCString("/usr/lib/mozembedlite/chrome/embedlite/content"), getter_AddRefs(file));
 #endif
     if (file && NS_SUCCEEDED(rv))
       file.forget(aResult);
